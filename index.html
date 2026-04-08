@@ -4,6 +4,7 @@
   <meta charset="UTF-8"> <!-- 设置字符编码为 UTF-8 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式视口设置 -->
   <title>Coding Plan - 编程计划落地页</title> <!-- 页面标题 -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script> <!-- 引入 Lucide 图标库 CDN -->
   <style> /* 内联样式开始 */
     /* ========== 全局重置与基础样式 ========== */
     * { /* 所有元素 */
@@ -207,6 +208,26 @@
       align-items: center; /* 垂直居中 */
       gap: 4px; /* 图标与文字间距 */
     } /* 结束元信息单项样式 */
+
+    /* ========== Lucide 图标样式 ========== */
+    [data-lucide] { /* Lucide 图标容器 */
+      display: inline-block; /* 行内块显示 */
+      width: 16px; /* 默认宽度 */
+      height: 16px; /* 默认高度 */
+      vertical-align: text-bottom; /* 与文字底部对齐 */
+      stroke: currentColor; /* 描边颜色继承父元素 */
+      stroke-width: 2; /* 描边宽度 */
+      stroke-linecap: round; /* 线帽圆角 */
+      stroke-linejoin: round; /* 连接处圆角 */
+      fill: none; /* 无填充 */
+    } /* 结束 Lucide 图标基础样式 */
+
+    .case-block [data-lucide] { /* 案例区块中的图标 */
+      width: 18px; /* 略大宽度 */
+      height: 18px; /* 略大高度 */
+      vertical-align: text-bottom; /* 与文字底部对齐 */
+      margin-right: 4px; /* 右侧间距 */
+    } /* 结束案例区块图标样式 */
 
     /* ========== 页脚 ========== */
     .footer { /* 页脚容器 */
@@ -461,8 +482,8 @@
         <h3>Python 编程基础</h3> <!-- 计划标题 -->
         <p class="description">从变量、数据类型到函数与模块，零基础掌握 Python 核心语法与编程思维。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 40 小时</span> <!-- 预计时长 -->
-          <span>📋 15 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 40 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 15 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 Python 卡片 -->
 
@@ -472,8 +493,8 @@
         <h3>HTML & CSS 网页开发</h3> <!-- 计划标题 -->
         <p class="description">学习网页结构与样式基础，从语义化标签到 Flexbox 与 Grid 布局实战。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 30 小时</span> <!-- 预计时长 -->
-          <span>📋 12 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 30 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 12 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 HTML/CSS 卡片 -->
 
@@ -483,8 +504,8 @@
         <h3>JavaScript 核心入门</h3> <!-- 计划标题 -->
         <p class="description">掌握 JS 基础语法、DOM 操作、事件处理与异步编程，构建交互式网页。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 50 小时</span> <!-- 预计时长 -->
-          <span>📋 18 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 50 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 18 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 JS 入门卡片 -->
 
@@ -494,8 +515,8 @@
         <h3>React 组件化开发</h3> <!-- 计划标题 -->
         <p class="description">深入学习 React Hooks、状态管理与组件设计模式，打造现代前端应用。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 60 小时</span> <!-- 预计时长 -->
-          <span>📋 10 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 60 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 10 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 React 卡片 -->
 
@@ -505,8 +526,8 @@
         <h3>Node.js 服务端开发</h3> <!-- 计划标题 -->
         <p class="description">使用 Express/Koa 构建后端 API，学习数据库操作、中间件与 RESTful 设计。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 55 小时</span> <!-- 预计时长 -->
-          <span>📋 8 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 55 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 8 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 Node.js 卡片 -->
 
@@ -516,8 +537,8 @@
         <h3>数据结构与算法</h3> <!-- 计划标题 -->
         <p class="description">系统学习数组、链表、树、图等核心数据结构与排序、搜索等经典算法。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 70 小时</span> <!-- 预计时长 -->
-          <span>📋 50+ 道题</span> <!-- 练习数量 -->
+          <span><i data-lucide="clock"></i> 70 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 50+ 道题</span> <!-- 练习数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束算法卡片 -->
 
@@ -527,8 +548,8 @@
         <h3>分布式系统设计</h3> <!-- 计划标题 -->
         <p class="description">掌握高可用架构设计、微服务、消息队列与分布式缓存等高级主题。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 80 小时</span> <!-- 预计时长 -->
-          <span>📋 6 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 80 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 6 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束系统设计卡片 -->
 
@@ -538,8 +559,8 @@
         <h3>前端性能优化</h3> <!-- 计划标题 -->
         <p class="description">深入渲染优化、代码分割、懒加载与 Core Web Vitals，打造极致用户体验。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 45 小时</span> <!-- 预计时长 -->
-          <span>📋 5 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 45 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 5 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束性能优化卡片 -->
 
@@ -549,8 +570,8 @@
         <h3>DevOps 工程实践</h3> <!-- 计划标题 -->
         <p class="description">CI/CD 流水线、Docker 容器化、Kubernetes 编排与监控告警体系实战。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span>⏱ 70 小时</span> <!-- 预计时长 -->
-          <span>📋 7 个项目</span> <!-- 项目数量 -->
+          <span><i data-lucide="clock"></i> 70 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
+          <span><i data-lucide="clipboard-list"></i> 7 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 DevOps 卡片 -->
 
@@ -570,15 +591,15 @@
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体：三列布局 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
           <p>传统自学需 6+ 个月，碎片化学习导致知识断层，无法独立完成前后端联调，面试屡屡碰壁。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
         <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
           <p>通过 CodingPlan 的 React + Node.js 系统化路径，从组件化思维到 API 设计层层递进，120 小时实战打通全栈技能链。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
           <p>3 个月拿到全栈 Offer，薪资涨幅 85%，独立负责微服务架构重构，团队交付效率提升 40%。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -606,15 +627,15 @@
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
           <p>传统培训课程侧重理论，缺少真实项目演练。学员只会 CRUD，面对高并发数据可视化需求无从下手。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
         <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
           <p>跟随 CodingPlan 的性能优化 + 数据结构专项路径，通过 WebSocket 实时推送、虚拟列表等高级项目，积累金融级前端经验。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
           <p>成功转型金融前端工程师，独立交付百万级数据看板项目，页面渲染性能提升 60%，获得年度最佳新人奖。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -642,15 +663,15 @@
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
           <p>医疗行业对安全性和可访问性要求极高，传统学习路径缺少合规实践，学员难以胜任企业级项目开发。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
         <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
           <p>借助 CodingPlan 的 HTML/CSS 基础到 DevOps 全链路计划，在项目实战中融入 WCAG 无障碍标准和 CI/CD 自动化部署。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
           <p>5 个月内从零基础成长为全栈开发者，主导开发的患者门户服务 10 万+ 用户，系统可用性达 99.9%。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -698,6 +719,9 @@
         } /* 结束条件判断 */
       }); /* 结束卡片遍历 */
     } /* 结束筛选函数 */
+
+    /* 初始化 Lucide 图标渲染 */
+    lucide.createIcons(); /* 将所有 <i data-lucide> 标签渲染为 SVG 图标 */
   </script> <!-- 结束脚本 -->
 </body> <!-- 结束页面主体 -->
 </html> <!-- 结束 HTML 文档 -->
