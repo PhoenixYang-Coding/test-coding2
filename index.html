@@ -222,6 +222,157 @@
       text-decoration: none; /* 去除下划线 */
     } /* 结束页脚链接样式 */
 
+    /* ========== 成功案例区域 ========== */
+    .success-section { /* 成功案例区块 */
+      max-width: 1100px; /* 最大宽度 */
+      margin: 0 auto; /* 水平居中 */
+      padding: 40px 20px 60px; /* 上 左右 下 内边距 */
+    } /* 结束成功案例区块 */
+
+    .section-title { /* 区块标题 */
+      text-align: center; /* 文字居中 */
+      font-size: 32px; /* 大号字体 */
+      color: #00e676; /* 科技绿 */
+      margin-bottom: 8px; /* 底部间距 */
+    } /* 结束区块标题 */
+
+    .section-subtitle { /* 区块副标题 */
+      text-align: center; /* 文字居中 */
+      font-size: 16px; /* 中号字体 */
+      color: #81c784; /* 中等绿色 */
+      margin-bottom: 40px; /* 底部间距 */
+    } /* 结束区块副标题 */
+
+    .case-card { /* 单个案例卡片 */
+      background: #0d1a14; /* 深绿黑背景 */
+      border: 1px solid #1b3a2a; /* 暗绿边框 */
+      border-radius: 12px; /* 圆角 */
+      padding: 32px; /* 内边距 */
+      margin-bottom: 24px; /* 底部间距 */
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* 多属性过渡 */
+    } /* 结束案例卡片 */
+
+    .case-card:hover { /* 案例卡片悬停 */
+      transform: translateY(-4px); /* 上浮效果 */
+      border-color: #00e676; /* 科技绿边框 */
+      box-shadow: 0 8px 32px rgba(0, 230, 118, 0.12); /* 绿色阴影 */
+    } /* 结束案例悬停 */
+
+    .case-card .case-header { /* 案例头部 */
+      display: flex; /* 弹性布局 */
+      justify-content: space-between; /* 两端对齐 */
+      align-items: center; /* 垂直居中 */
+      margin-bottom: 20px; /* 底部间距 */
+      flex-wrap: wrap; /* 允许换行 */
+      gap: 12px; /* 间距 */
+    } /* 结束案例头部 */
+
+    .case-card .case-title { /* 案例标题 */
+      font-size: 22px; /* 大号字体 */
+      color: #e0e0e0; /* 近白色 */
+      font-weight: 700; /* 加粗 */
+    } /* 结束案例标题 */
+
+    .case-card .case-tag { /* 案例行业标签 */
+      display: inline-block; /* 行内块 */
+      padding: 4px 14px; /* 内边距 */
+      border-radius: 16px; /* 圆角 */
+      font-size: 13px; /* 小号字体 */
+      font-weight: 600; /* 半粗体 */
+      background: rgba(0, 230, 118, 0.15); /* 浅绿半透明背景 */
+      color: #69f0ae; /* 亮绿文字 */
+    } /* 结束案例标签 */
+
+    .case-card .case-body { /* 案例主体内容 */
+      display: grid; /* 网格布局 */
+      grid-template-columns: 1fr 1fr 1fr; /* 三列等宽 */
+      gap: 24px; /* 网格间距 */
+    } /* 结束案例主体 */
+
+    .case-card .case-block { /* 案例内容块（问题/方案/收益） */
+      padding: 16px; /* 内边距 */
+      background: rgba(10, 15, 13, 0.6); /* 半透明深色背景 */
+      border-radius: 8px; /* 圆角 */
+      border-left: 3px solid #1b3a2a; /* 左侧边框 */
+    } /* 结束内容块 */
+
+    .case-card .case-block.problem { /* 问题块 */
+      border-left-color: #ef5350; /* 红色边框表示问题 */
+    } /* 结束问题块 */
+
+    .case-card .case-block.solution { /* 方案块 */
+      border-left-color: #00e676; /* 绿色边框表示方案 */
+    } /* 结束方案块 */
+
+    .case-card .case-block.benefit { /* 收益块 */
+      border-left-color: #69f0ae; /* 亮绿边框表示收益 */
+    } /* 结束收益块 */
+
+    .case-card .case-block h4 { /* 内容块标题 */
+      font-size: 15px; /* 中号字体 */
+      margin-bottom: 10px; /* 底部间距 */
+      font-weight: 600; /* 半粗体 */
+    } /* 结束内容块标题 */
+
+    .case-card .case-block.problem h4 { /* 问题标题 */
+      color: #ef5350; /* 红色 */
+    } /* 结束问题标题 */
+
+    .case-card .case-block.solution h4 { /* 方案标题 */
+      color: #00e676; /* 科技绿 */
+    } /* 结束方案标题 */
+
+    .case-card .case-block.benefit h4 { /* 收益标题 */
+      color: #69f0ae; /* 亮绿 */
+    } /* 结束收益标题 */
+
+    .case-card .case-block p { /* 内容块文字 */
+      font-size: 14px; /* 小号字体 */
+      color: #c8e6c9; /* 浅绿文字 */
+      line-height: 1.6; /* 行高 */
+    } /* 结束内容块文字 */
+
+    .case-card .case-metrics { /* 指标数据区域 */
+      display: flex; /* 弹性布局 */
+      gap: 32px; /* 间距 */
+      margin-top: 20px; /* 顶部间距 */
+      padding-top: 16px; /* 上内边距 */
+      border-top: 1px solid #1b3a2a; /* 顶部边框分隔线 */
+      flex-wrap: wrap; /* 允许换行 */
+    } /* 结束指标区域 */
+
+    .case-card .metric { /* 单个指标 */
+      text-align: center; /* 文字居中 */
+    } /* 结束单个指标 */
+
+    .case-card .metric-value { /* 指标数值 */
+      display: block; /* 块级显示 */
+      font-size: 24px; /* 大号字体 */
+      font-weight: 700; /* 加粗 */
+      color: #69f0ae; /* 亮绿色 */
+    } /* 结束指标数值 */
+
+    .case-card .metric-label { /* 指标标签 */
+      font-size: 12px; /* 小号字体 */
+      color: #81c784; /* 中等绿色 */
+      margin-top: 4px; /* 顶部间距 */
+    } /* 结束指标标签 */
+
+    /* ========== 成功案例响应式 ========== */
+    @media (max-width: 768px) { /* 平板及以下：案例卡片 */
+      .case-card .case-body { /* 案例主体 */
+        grid-template-columns: 1fr; /* 单列布局 */
+      } /* 结束案例主体响应式 */
+
+      .case-card .case-metrics { /* 指标区域 */
+        gap: 20px; /* 缩小间距 */
+      } /* 结束指标响应式 */
+
+      .section-title { /* 区块标题 */
+        font-size: 26px; /* 缩小字体 */
+      } /* 结束区块标题响应式 */
+    } /* 结束平板案例响应式 */
+
     /* ========== 响应式适配 ========== */
     @media (max-width: 768px) { /* 平板及以下屏幕 */
       .hero h1 { /* Hero 标题 */
@@ -405,6 +556,120 @@
 
     </div> <!-- 结束网格容器 -->
   </section> <!-- 结束计划区域 -->
+
+  <!-- ========== 成功案例区域 ========== -->
+  <section class="success-section" id="success" aria-labelledby="success-title"> <!-- 成功案例区块，使用 ARIA 关联标题 -->
+    <h2 class="section-title" id="success-title">成功案例</h2> <!-- 区块标题 -->
+    <p class="section-subtitle">看看 CodingPlan 学员如何突破传统学习瓶颈，实现职业跃迁</p> <!-- 区块副标题 -->
+
+    <!-- 案例卡片1: 电商平台重构 -->
+    <article class="case-card" role="article" aria-label="电商平台重构成功案例"> <!-- 案例卡片1 -->
+      <div class="case-header"> <!-- 案例头部 -->
+        <h3 class="case-title">电商平台全栈重构</h3> <!-- 案例标题 -->
+        <span class="case-tag">电商行业</span> <!-- 行业标签 -->
+      </div> <!-- 结束案例头部 -->
+      <div class="case-body"> <!-- 案例主体：三列布局 -->
+        <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
+          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <p>传统自学需 6+ 个月，碎片化学习导致知识断层，无法独立完成前后端联调，面试屡屡碰壁。</p> <!-- 问题描述 -->
+        </div> <!-- 结束问题列 -->
+        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
+          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <p>通过 CodingPlan 的 React + Node.js 系统化路径，从组件化思维到 API 设计层层递进，120 小时实战打通全栈技能链。</p> <!-- 方案描述 -->
+        </div> <!-- 结束方案列 -->
+        <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
+          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <p>3 个月拿到全栈 Offer，薪资涨幅 85%，独立负责微服务架构重构，团队交付效率提升 40%。</p> <!-- 收益描述 -->
+        </div> <!-- 结束收益列 -->
+      </div> <!-- 结束案例主体 -->
+      <div class="case-metrics" role="list" aria-label="关键指标"> <!-- 关键指标 -->
+        <div class="metric" role="listitem"> <!-- 指标1 -->
+          <span class="metric-value">3 个月</span> <!-- 指标数值 -->
+          <span class="metric-label">从学习到入职</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标1 -->
+        <div class="metric" role="listitem"> <!-- 指标2 -->
+          <span class="metric-value">85%</span> <!-- 指标数值 -->
+          <span class="metric-label">薪资涨幅</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标2 -->
+        <div class="metric" role="listitem"> <!-- 指标3 -->
+          <span class="metric-value">40%</span> <!-- 指标数值 -->
+          <span class="metric-label">团队效率提升</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标3 -->
+      </div> <!-- 结束关键指标 -->
+    </article> <!-- 结束案例卡片1 -->
+
+    <!-- 案例卡片2: 金融数据看板 -->
+    <article class="case-card" role="article" aria-label="金融数据看板成功案例"> <!-- 案例卡片2 -->
+      <div class="case-header"> <!-- 案例头部 -->
+        <h3 class="case-title">金融数据实时看板</h3> <!-- 案例标题 -->
+        <span class="case-tag">金融行业</span> <!-- 行业标签 -->
+      </div> <!-- 结束案例头部 -->
+      <div class="case-body"> <!-- 案例主体 -->
+        <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
+          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <p>传统培训课程侧重理论，缺少真实项目演练。学员只会 CRUD，面对高并发数据可视化需求无从下手。</p> <!-- 问题描述 -->
+        </div> <!-- 结束问题列 -->
+        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
+          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <p>跟随 CodingPlan 的性能优化 + 数据结构专项路径，通过 WebSocket 实时推送、虚拟列表等高级项目，积累金融级前端经验。</p> <!-- 方案描述 -->
+        </div> <!-- 结束方案列 -->
+        <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
+          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <p>成功转型金融前端工程师，独立交付百万级数据看板项目，页面渲染性能提升 60%，获得年度最佳新人奖。</p> <!-- 收益描述 -->
+        </div> <!-- 结束收益列 -->
+      </div> <!-- 结束案例主体 -->
+      <div class="case-metrics" role="list" aria-label="关键指标"> <!-- 关键指标 -->
+        <div class="metric" role="listitem"> <!-- 指标1 -->
+          <span class="metric-value">百万级</span> <!-- 指标数值 -->
+          <span class="metric-label">数据渲染能力</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标1 -->
+        <div class="metric" role="listitem"> <!-- 指标2 -->
+          <span class="metric-value">60%</span> <!-- 指标数值 -->
+          <span class="metric-label">渲染性能提升</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标2 -->
+        <div class="metric" role="listitem"> <!-- 指标3 -->
+          <span class="metric-value">4 个月</span> <!-- 指标数值 -->
+          <span class="metric-label">完成转型周期</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标3 -->
+      </div> <!-- 结束关键指标 -->
+    </article> <!-- 结束案例卡片2 -->
+
+    <!-- 案例卡片3: 医疗患者门户 -->
+    <article class="case-card" role="article" aria-label="医疗患者门户成功案例"> <!-- 案例卡片3 -->
+      <div class="case-header"> <!-- 案例头部 -->
+        <h3 class="case-title">医疗患者管理门户</h3> <!-- 案例标题 -->
+        <span class="case-tag">医疗行业</span> <!-- 行业标签 -->
+      </div> <!-- 结束案例头部 -->
+      <div class="case-body"> <!-- 案例主体 -->
+        <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
+          <h4>⚠ 痛点</h4> <!-- 问题标题 -->
+          <p>医疗行业对安全性和可访问性要求极高，传统学习路径缺少合规实践，学员难以胜任企业级项目开发。</p> <!-- 问题描述 -->
+        </div> <!-- 结束问题列 -->
+        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
+          <h4>✦ 方案</h4> <!-- 方案标题 -->
+          <p>借助 CodingPlan 的 HTML/CSS 基础到 DevOps 全链路计划，在项目实战中融入 WCAG 无障碍标准和 CI/CD 自动化部署。</p> <!-- 方案描述 -->
+        </div> <!-- 结束方案列 -->
+        <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
+          <h4>★ 收益</h4> <!-- 收益标题 -->
+          <p>5 个月内从零基础成长为全栈开发者，主导开发的患者门户服务 10 万+ 用户，系统可用性达 99.9%。</p> <!-- 收益描述 -->
+        </div> <!-- 结束收益列 -->
+      </div> <!-- 结束案例主体 -->
+      <div class="case-metrics" role="list" aria-label="关键指标"> <!-- 关键指标 -->
+        <div class="metric" role="listitem"> <!-- 指标1 -->
+          <span class="metric-value">10 万+</span> <!-- 指标数值 -->
+          <span class="metric-label">服务用户数</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标1 -->
+        <div class="metric" role="listitem"> <!-- 指标2 -->
+          <span class="metric-value">99.9%</span> <!-- 指标数值 -->
+          <span class="metric-label">系统可用性</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标2 -->
+        <div class="metric" role="listitem"> <!-- 指标3 -->
+          <span class="metric-value">5 个月</span> <!-- 指标数值 -->
+          <span class="metric-label">零基础到上线</span> <!-- 指标标签 -->
+        </div> <!-- 结束指标3 -->
+      </div> <!-- 结束关键指标 -->
+    </article> <!-- 结束案例卡片3 -->
+  </section> <!-- 结束成功案例区域 -->
 
   <!-- ========== 页脚 ========== -->
   <footer class="footer" id="about"> <!-- 页脚区域 -->
