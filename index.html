@@ -15,19 +15,19 @@
 
     body { /* 页面主体 */
       font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 设置字体栈 */
-      background-color: #0a0f0d; /* 深色背景，营造科技感 */
-      color: #c8e6c9; /* 浅绿色文字，保持高可读性 */
+      background-color: #1a0f0a; /* 深暖色背景，营造温暖感 */
+      color: #e6c9b8; /* 暖米色文字，保持高可读性 */
       line-height: 1.6; /* 行高，提升阅读舒适度 */
     } /* 结束 body 样式 */
 
-    /* ========== 科技绿色彩变量（通过注释记录） ========== */
-    /* 主色调：#00e676 — 科技绿 */
-    /* 辅助色：#1b5e20 — 深绿 */
-    /* 背景色：#0a0f0d — 近黑深色 */
-    /* 卡片色：#0d1a14 — 深绿黑 */
-    /* 高亮色：#69f0ae — 亮绿 */
-    /* 文字色：#c8e6c9 — 柔绿 */
-    /* 边框色：#1b3a2a — 暗绿边框 */
+    /* ========== 暗橙暖色彩变量（通过注释记录） ========== */
+    /* 主色调：#ff6d00 — 暗橙 */
+    /* 辅助色：#bf360c — 深橙 */
+    /* 背景色：#1a0f0a — 近黑暖色 */
+    /* 卡片色：#1f140d — 深暖黑 */
+    /* 高亮色：#ffab40 — 亮橙 */
+    /* 文字色：#e6c9b8 — 暖米色 */
+    /* 边框色：#3a2a1b — 暗橙边框 */
 
     /* ========== 导航栏 ========== */
     .navbar { /* 导航栏容器 */
@@ -35,8 +35,8 @@
       justify-content: space-between; /* 两端对齐 */
       align-items: center; /* 垂直居中 */
       padding: 16px 40px; /* 上下16px 左右40px 内边距 */
-      background-color: #0d1a14; /* 深绿黑背景 */
-      border-bottom: 1px solid #1b3a2a; /* 底部暗绿边框 */
+      background-color: #1f140d; /* 深暖黑背景 */
+      border-bottom: 1px solid #3a2a1b; /* 底部暗橙边框 */
       position: sticky; /* 粘性定位 */
       top: 0; /* 固定在顶部 */
       z-index: 100; /* 确保在最上层 */
@@ -45,12 +45,12 @@
     .navbar .logo { /* 导航栏 Logo */
       font-size: 22px; /* 字体大小 */
       font-weight: 700; /* 加粗 */
-      color: #00e676; /* 科技绿颜色 */
+      color: #ff6d00; /* 暗橙颜色 */
       letter-spacing: 2px; /* 字间距 */
     } /* 结束 Logo 样式 */
 
     .navbar nav a { /* 导航链接 */
-      color: #c8e6c9; /* 浅绿文字 */
+      color: #e6c9b8; /* 暖米色文字 */
       text-decoration: none; /* 去除下划线 */
       margin-left: 28px; /* 左侧间距 */
       font-size: 15px; /* 字体大小 */
@@ -58,26 +58,26 @@
     } /* 结束导航链接样式 */
 
     .navbar nav a:hover { /* 导航链接悬停状态 */
-      color: #00e676; /* 悬停变为科技绿 */
+      color: #ff6d00; /* 悬停变为暗橙 */
     } /* 结束悬停样式 */
 
     /* ========== Hero 区域 ========== */
     .hero { /* Hero 主视觉区域 */
       text-align: center; /* 文字居中 */
       padding: 80px 20px 60px; /* 上 左右 下 内边距 */
-      background: linear-gradient(180deg, #0d1a14 0%, #0a0f0d 100%); /* 从深绿到近黑的渐变 */
+      background: linear-gradient(180deg, #1f140d 0%, #1a0f0a 100%); /* 从深暖到近黑的渐变 */
     } /* 结束 Hero 样式 */
 
     .hero h1 { /* Hero 标题 */
       font-size: 48px; /* 大号字体 */
-      color: #00e676; /* 科技绿 */
+      color: #ff6d00; /* 暗橙 */
       margin-bottom: 16px; /* 底部间距 */
-      text-shadow: 0 0 30px rgba(0, 230, 118, 0.3); /* 绿色光晕 */
+      text-shadow: 0 0 30px rgba(255, 109, 0, 0.3); /* 橙色光晕 */
     } /* 结束 Hero 标题样式 */
 
     .hero p { /* Hero 描述文字 */
       font-size: 18px; /* 中号字体 */
-      color: #81c784; /* 中等绿色 */
+      color: #d4a574; /* 中等暖色 */
       max-width: 600px; /* 最大宽度 */
       margin: 0 auto 30px; /* 居中并添加底部间距 */
     } /* 结束 Hero 描述样式 */
@@ -97,12 +97,12 @@
       display: block; /* 块级显示 */
       font-size: 36px; /* 大号字体 */
       font-weight: 700; /* 加粗 */
-      color: #69f0ae; /* 亮绿色 */
+      color: #ffab40; /* 亮橙色 */
     } /* 结束统计数字样式 */
 
     .hero .stats .stat-label { /* 统计标签 */
       font-size: 14px; /* 小号字体 */
-      color: #81c784; /* 中等绿色 */
+      color: #d4a574; /* 中等暖色 */
     } /* 结束统计标签样式 */
 
     /* ========== 筛选栏 ========== */
@@ -116,9 +116,9 @@
 
     .filter-btn { /* 筛选按钮 */
       padding: 8px 20px; /* 内边距 */
-      border: 1px solid #1b3a2a; /* 暗绿边框 */
+      border: 1px solid #3a2a1b; /* 暗橙边框 */
       background: transparent; /* 透明背景 */
-      color: #c8e6c9; /* 浅绿文字 */
+      color: #e6c9b8; /* 暖米色文字 */
       border-radius: 20px; /* 圆角 */
       cursor: pointer; /* 手型光标 */
       font-size: 14px; /* 字体大小 */
@@ -127,9 +127,9 @@
 
     .filter-btn:hover, /* 筛选按钮悬停 */
     .filter-btn.active { /* 筛选按钮激活 */
-      background-color: #00e676; /* 科技绿背景 */
-      color: #0a0f0d; /* 深色文字 */
-      border-color: #00e676; /* 科技绿边框 */
+      background-color: #ff6d00; /* 暗橙背景 */
+      color: #1a0f0a; /* 深色文字 */
+      border-color: #ff6d00; /* 暗橙边框 */
     } /* 结束按钮交互样式 */
 
     /* ========== 计划卡片网格 ========== */
@@ -146,8 +146,8 @@
     } /* 结束网格容器样式 */
 
     .plan-card { /* 单个计划卡片 */
-      background: #0d1a14; /* 深绿黑背景 */
-      border: 1px solid #1b3a2a; /* 暗绿边框 */
+      background: #1f140d; /* 深暖黑背景 */
+      border: 1px solid #3a2a1b; /* 暗橙边框 */
       border-radius: 12px; /* 圆角 */
       padding: 28px; /* 内边距 */
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* 多属性过渡 */
@@ -155,8 +155,8 @@
 
     .plan-card:hover { /* 卡片悬停效果 */
       transform: translateY(-4px); /* 上浮4px */
-      border-color: #00e676; /* 科技绿边框 */
-      box-shadow: 0 8px 32px rgba(0, 230, 118, 0.12); /* 绿色阴影 */
+      border-color: #ff6d00; /* 暗橙边框 */
+      box-shadow: 0 8px 32px rgba(255, 109, 0, 0.12); /* 橙色阴影 */
     } /* 结束悬停效果 */
 
     .plan-card .tag { /* 难度标签 */
@@ -169,8 +169,8 @@
     } /* 结束标签样式 */
 
     .tag.beginner { /* 初级标签 */
-      background: rgba(0, 230, 118, 0.15); /* 浅绿半透明背景 */
-      color: #69f0ae; /* 亮绿文字 */
+      background: rgba(255, 109, 0, 0.15); /* 浅橙半透明背景 */
+      color: #ffab40; /* 亮橙文字 */
     } /* 结束初级标签 */
 
     .tag.intermediate { /* 中级标签 */
@@ -191,7 +191,7 @@
 
     .plan-card .description { /* 卡片描述 */
       font-size: 14px; /* 小号字体 */
-      color: #81c784; /* 中等绿色 */
+      color: #d4a574; /* 中等暖色 */
       margin-bottom: 16px; /* 底部间距 */
       line-height: 1.5; /* 行高 */
     } /* 结束卡片描述样式 */
@@ -200,7 +200,7 @@
       display: flex; /* 弹性布局 */
       gap: 16px; /* 间距 */
       font-size: 13px; /* 小号字体 */
-      color: #66bb6a; /* 中绿色 */
+      color: #c48b5c; /* 中暖色 */
     } /* 结束元信息样式 */
 
     .plan-card .meta span { /* 元信息单项 */
@@ -233,13 +233,13 @@
     .footer { /* 页脚容器 */
       text-align: center; /* 文字居中 */
       padding: 40px 20px; /* 内边距 */
-      border-top: 1px solid #1b3a2a; /* 顶部边框 */
-      color: #4a7c5c; /* 暗绿文字 */
+      border-top: 1px solid #3a2a1b; /* 顶部边框 */
+      color: #7c5c4a; /* 暗暖文字 */
       font-size: 14px; /* 字体大小 */
     } /* 结束页脚样式 */
 
     .footer a { /* 页脚链接 */
-      color: #69f0ae; /* 亮绿色 */
+      color: #ffab40; /* 亮橙色 */
       text-decoration: none; /* 去除下划线 */
     } /* 结束页脚链接样式 */
 
@@ -253,20 +253,20 @@
     .section-title { /* 区块标题 */
       text-align: center; /* 文字居中 */
       font-size: 32px; /* 大号字体 */
-      color: #00e676; /* 科技绿 */
+      color: #ff6d00; /* 暗橙 */
       margin-bottom: 8px; /* 底部间距 */
     } /* 结束区块标题 */
 
     .section-subtitle { /* 区块副标题 */
       text-align: center; /* 文字居中 */
       font-size: 16px; /* 中号字体 */
-      color: #81c784; /* 中等绿色 */
+      color: #d4a574; /* 中等暖色 */
       margin-bottom: 40px; /* 底部间距 */
     } /* 结束区块副标题 */
 
     .case-card { /* 单个案例卡片 */
-      background: #0d1a14; /* 深绿黑背景 */
-      border: 1px solid #1b3a2a; /* 暗绿边框 */
+      background: #1f140d; /* 深暖黑背景 */
+      border: 1px solid #3a2a1b; /* 暗橙边框 */
       border-radius: 12px; /* 圆角 */
       padding: 32px; /* 内边距 */
       margin-bottom: 24px; /* 底部间距 */
@@ -275,8 +275,8 @@
 
     .case-card:hover { /* 案例卡片悬停 */
       transform: translateY(-4px); /* 上浮效果 */
-      border-color: #00e676; /* 科技绿边框 */
-      box-shadow: 0 8px 32px rgba(0, 230, 118, 0.12); /* 绿色阴影 */
+      border-color: #ff6d00; /* 暗橙边框 */
+      box-shadow: 0 8px 32px rgba(255, 109, 0, 0.12); /* 橙色阴影 */
     } /* 结束案例悬停 */
 
     .case-card .case-header { /* 案例头部 */
@@ -300,8 +300,8 @@
       border-radius: 16px; /* 圆角 */
       font-size: 13px; /* 小号字体 */
       font-weight: 600; /* 半粗体 */
-      background: rgba(0, 230, 118, 0.15); /* 浅绿半透明背景 */
-      color: #69f0ae; /* 亮绿文字 */
+      background: rgba(255, 109, 0, 0.15); /* 浅橙半透明背景 */
+      color: #ffab40; /* 亮橙文字 */
     } /* 结束案例标签 */
 
     .case-card .case-body { /* 案例主体内容 */
@@ -312,9 +312,9 @@
 
     .case-card .case-block { /* 案例内容块（问题/方案/收益） */
       padding: 16px; /* 内边距 */
-      background: rgba(10, 15, 13, 0.6); /* 半透明深色背景 */
+      background: rgba(26, 15, 10, 0.6); /* 半透明深色背景 */
       border-radius: 8px; /* 圆角 */
-      border-left: 3px solid #1b3a2a; /* 左侧边框 */
+      border-left: 3px solid #3a2a1b; /* 左侧边框 */
     } /* 结束内容块 */
 
     .case-card .case-block.problem { /* 问题块 */
@@ -322,11 +322,11 @@
     } /* 结束问题块 */
 
     .case-card .case-block.solution { /* 方案块 */
-      border-left-color: #00e676; /* 绿色边框表示方案 */
+      border-left-color: #ff6d00; /* 橙色边框表示方案 */
     } /* 结束方案块 */
 
     .case-card .case-block.benefit { /* 收益块 */
-      border-left-color: #69f0ae; /* 亮绿边框表示收益 */
+      border-left-color: #ffab40; /* 亮橙边框表示收益 */
     } /* 结束收益块 */
 
     .case-card .case-block h4 { /* 内容块标题 */
@@ -340,16 +340,16 @@
     } /* 结束问题标题 */
 
     .case-card .case-block.solution h4 { /* 方案标题 */
-      color: #00e676; /* 科技绿 */
+      color: #ff6d00; /* 暗橙 */
     } /* 结束方案标题 */
 
     .case-card .case-block.benefit h4 { /* 收益标题 */
-      color: #69f0ae; /* 亮绿 */
+      color: #ffab40; /* 亮橙 */
     } /* 结束收益标题 */
 
     .case-card .case-block p { /* 内容块文字 */
       font-size: 14px; /* 小号字体 */
-      color: #c8e6c9; /* 浅绿文字 */
+      color: #e6c9b8; /* 暖米色文字 */
       line-height: 1.6; /* 行高 */
     } /* 结束内容块文字 */
 
@@ -358,7 +358,7 @@
       gap: 32px; /* 间距 */
       margin-top: 20px; /* 顶部间距 */
       padding-top: 16px; /* 上内边距 */
-      border-top: 1px solid #1b3a2a; /* 顶部边框分隔线 */
+      border-top: 1px solid #3a2a1b; /* 顶部边框分隔线 */
       flex-wrap: wrap; /* 允许换行 */
     } /* 结束指标区域 */
 
@@ -370,12 +370,12 @@
       display: block; /* 块级显示 */
       font-size: 24px; /* 大号字体 */
       font-weight: 700; /* 加粗 */
-      color: #69f0ae; /* 亮绿色 */
+      color: #ffab40; /* 亮橙色 */
     } /* 结束指标数值 */
 
     .case-card .metric-label { /* 指标标签 */
       font-size: 12px; /* 小号字体 */
-      color: #81c784; /* 中等绿色 */
+      color: #d4a574; /* 中等暖色 */
       margin-top: 4px; /* 顶部间距 */
     } /* 结束指标标签 */
 
