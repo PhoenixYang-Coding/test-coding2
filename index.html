@@ -466,10 +466,10 @@
 
   <!-- ========== 筛选栏 ========== -->
   <div class="filter-bar" id="filterBar"> <!-- 筛选按钮组 -->
-    <button class="filter-btn active" onclick="filterPlans('all')">全部</button> <!-- 全部筛选 -->
-    <button class="filter-btn" onclick="filterPlans('beginner')">入门</button> <!-- 入门筛选 -->
-    <button class="filter-btn" onclick="filterPlans('intermediate')">进阶</button> <!-- 进阶筛选 -->
-    <button class="filter-btn" onclick="filterPlans('advanced')">高级</button> <!-- 高级筛选 -->
+    <button class="filter-btn active" onclick="filterPlans('all', event)">全部</button> <!-- 全部筛选 -->
+    <button class="filter-btn" onclick="filterPlans('beginner', event)">入门</button> <!-- 入门筛选 -->
+    <button class="filter-btn" onclick="filterPlans('intermediate', event)">进阶</button> <!-- 进阶筛选 -->
+    <button class="filter-btn" onclick="filterPlans('advanced', event)">高级</button> <!-- 高级筛选 -->
   </div> <!-- 结束筛选栏 -->
 
   <!-- ========== 计划卡片网格 ========== -->
@@ -699,7 +699,7 @@
 
   <!-- ========== 筛选交互脚本 ========== -->
   <script> /* 脚本开始 */
-    function filterPlans(level) { /* 筛选计划函数，接收难度等级参数 */
+    function filterPlans(level, e) { /* 筛选计划函数，接收难度等级和事件参数 */
       var cards = document.querySelectorAll('.plan-card'); /* 获取所有计划卡片 */
       var buttons = document.querySelectorAll('.filter-btn'); /* 获取所有筛选按钮 */
 
@@ -707,7 +707,7 @@
         btn.classList.remove('active'); /* 移除激活状态 */
       }); /* 结束按钮遍历 */
 
-      event.target.classList.add('active'); /* 为当前点击的按钮添加激活状态 */
+      e.target.classList.add('active'); /* 为当前点击的按钮添加激活状态 */
 
       cards.forEach(function(card) { /* 遍历所有卡片 */
         if (level === 'all') { /* 如果选择"全部" */
