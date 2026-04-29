@@ -4,8 +4,42 @@
   <meta charset="UTF-8"> <!-- 设置字符编码为 UTF-8 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式视口设置 -->
   <title>Coding Plan - 编程计划落地页</title> <!-- 页面标题 -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script> <!-- 引入 Lucide 图标库 CDN -->
+  <meta name="description" content="系统化编程学习计划，从零到一精心设计的学习路径，助你高效掌握编程技能。"> <!-- SEO 描述 -->
+
+  <!-- ========== 外部资源 CDN 引入 ========== -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS 滚动动画样式库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <!-- Animate.css 交互动画库 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"> <!-- Google Fonts：Inter + JetBrains Mono -->
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Iconify 图标框架，用于 Solar Bold Duotone 图标集 -->
+
   <style> /* 内联样式开始 */
+    /* ========== CSS 变量：AI Coding 赛博朋克配色 ========== */
+    :root { /* 根元素变量定义 */
+      --bg: #0a0a1a; /* 主背景色：深海军蓝 */
+      --bg-alt: #060612; /* 交替背景色：更深蓝黑 */
+      --card: #111128; /* 卡片背景色：暗靛蓝 */
+      --card-hover: #16163a; /* 卡片悬停背景：稍亮靛蓝 */
+      --border: #1e1e3f; /* 边框色：暗紫边框 */
+      --border-glow: #00f0ff33; /* 边框光晕色：半透明青色 */
+      --primary: #00f0ff; /* 主色调：霓虹青 */
+      --primary-dim: #00f0ff66; /* 主色调半透明：用于背景 */
+      --secondary: #b967ff; /* 辅助色：霓虹紫 */
+      --accent: #ff00c1; /* 强调色：霓虹粉 */
+      --highlight: #05ffa1; /* 高亮色：霓虹绿 */
+      --text: #e0e0ff; /* 主文字色：浅蓝白 */
+      --text-secondary: #b0b0dd; /* 次要文字色：中等蓝白 */
+      --muted: #7a7aaa; /* 弱化文字色：灰紫 */
+      --danger: #ef5350; /* 危险/红色：用于高级标签 */
+      --warning: #ffd54f; /* 警告/黄色：用于中级标签 */
+      --radius-sm: 8px; /* 小圆角 */
+      --radius-md: 14px; /* 中圆角 */
+      --radius-lg: 20px; /* 大圆角 */
+      --radius-full: 9999px; /* 全圆角（胶囊形） */
+      --shadow-glow-primary: 0 0 20px rgba(0, 240, 255, 0.15); /* 主色光晕阴影 */
+      --shadow-glow-secondary: 0 0 20px rgba(185, 103, 255, 0.15); /* 辅色光晕阴影 */
+      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 基础过渡曲线 */
+    } /* 结束 CSS 变量定义 */
+
     /* ========== 全局重置与基础样式 ========== */
     * { /* 所有元素 */
       margin: 0; /* 清除默认外边距 */
@@ -13,352 +47,469 @@
       box-sizing: border-box; /* 使用 border-box 盒模型 */
     } /* 结束通配选择器 */
 
+    html { /* HTML 根元素 */
+      scroll-behavior: smooth; /* 平滑滚动 */
+    } /* 结束 HTML 根元素样式 */
+
     body { /* 页面主体 */
-      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 设置字体栈 */
-      background-color: #1a0f0a; /* 深暖色背景，营造温暖感 */
-      color: #e6c9b8; /* 暖米色文字，保持高可读性 */
-      line-height: 1.6; /* 行高，提升阅读舒适度 */
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 设置字体栈：Inter 优先 */
+      background-color: var(--bg); /* 深海军蓝背景 */
+      color: var(--text); /* 浅蓝白文字 */
+      line-height: 1.7; /* 行高，提升阅读舒适度 */
+      overflow-x: hidden; /* 隐藏水平溢出，防止动画导致的横向滚动条 */
     } /* 结束 body 样式 */
 
-    /* ========== 暗橙暖色彩变量（通过注释记录） ========== */
-    /* 主色调：#ff6d00 — 暗橙 */
-    /* 辅助色：#bf360c — 深橙 */
-    /* 背景色：#1a0f0a — 近黑暖色 */
-    /* 卡片色：#1f140d — 深暖黑 */
-    /* 高亮色：#ffab40 — 亮橙 */
-    /* 文字色：#e6c9b8 — 暖米色 */
-    /* 边框色：#3a2a1b — 暗橙边框 */
+    /* ========== 选中文字样式（赛博朋克风格） ========== */
+    ::selection { /* 文字选中状态 */
+      background: var(--primary); /* 青色背景 */
+      color: var(--bg); /* 深色文字 */
+    } /* 结束选中样式 */
 
     /* ========== 导航栏 ========== */
     .navbar { /* 导航栏容器 */
-      display: flex; /* 使用弹性布局 */
+      display: flex; /* 弹性布局 */
       justify-content: space-between; /* 两端对齐 */
       align-items: center; /* 垂直居中 */
-      padding: 16px 40px; /* 上下16px 左右40px 内边距 */
-      background-color: #1f140d; /* 深暖黑背景 */
-      border-bottom: 1px solid #3a2a1b; /* 底部暗橙边框 */
+      padding: 18px 48px; /* 上下18px 左右48px 内边距 */
+      background: rgba(10, 10, 26, 0.85); /* 半透明深蓝背景 */
+      backdrop-filter: blur(16px); /* 毛玻璃模糊效果 */
+      -webkit-backdrop-filter: blur(16px); /* Safari 兼容毛玻璃 */
+      border-bottom: 1px solid var(--border); /* 底部暗紫边框 */
       position: sticky; /* 粘性定位 */
       top: 0; /* 固定在顶部 */
       z-index: 100; /* 确保在最上层 */
+      transition: border-color var(--transition-base); /* 边框颜色过渡 */
     } /* 结束导航栏样式 */
 
+    .navbar.scrolled { /* 滚动后导航栏状态 */
+      border-bottom-color: var(--primary-dim); /* 底部边框变为青色光晕 */
+    } /* 结束滚动导航栏样式 */
+
     .navbar .logo { /* 导航栏 Logo */
-      font-size: 22px; /* 字体大小 */
+      font-family: 'JetBrains Mono', monospace; /* 等宽字体 */
+      font-size: 20px; /* 字体大小 */
       font-weight: 700; /* 加粗 */
-      color: #ff6d00; /* 暗橙颜色 */
-      letter-spacing: 2px; /* 字间距 */
+      color: var(--primary); /* 霓虹青 */
+      letter-spacing: 3px; /* 字间距 */
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.4); /* 青色光晕 */
+      text-decoration: none; /* 去除下划线 */
     } /* 结束 Logo 样式 */
 
+    .navbar nav { /* 导航链接容器 */
+      display: flex; /* 弹性布局 */
+      align-items: center; /* 垂直居中 */
+      gap: 8px; /* 间距 */
+    } /* 结束导航链接容器 */
+
     .navbar nav a { /* 导航链接 */
-      color: #e6c9b8; /* 暖米色文字 */
+      color: var(--text-secondary); /* 中等蓝白文字 */
       text-decoration: none; /* 去除下划线 */
-      margin-left: 28px; /* 左侧间距 */
-      font-size: 15px; /* 字体大小 */
-      transition: color 0.3s; /* 颜色过渡动画 */
+      padding: 8px 18px; /* 内边距 */
+      font-size: 14px; /* 字体大小 */
+      font-weight: 500; /* 中等粗细 */
+      border-radius: var(--radius-full); /* 胶囊圆角 */
+      transition: all var(--transition-base); /* 全属性过渡 */
+      letter-spacing: 0.3px; /* 微调字间距 */
     } /* 结束导航链接样式 */
 
     .navbar nav a:hover { /* 导航链接悬停状态 */
-      color: #ff6d00; /* 悬停变为暗橙 */
+      color: var(--primary); /* 霓虹青文字 */
+      background: var(--primary-dim); /* 半透明青色背景 */
     } /* 结束悬停样式 */
 
     /* ========== Hero 区域 ========== */
     .hero { /* Hero 主视觉区域 */
       text-align: center; /* 文字居中 */
-      padding: 80px 20px 60px; /* 上 左右 下 内边距 */
-      background: linear-gradient(180deg, #1f140d 0%, #1a0f0a 100%); /* 从深暖到近黑的渐变 */
+      padding: 120px 24px 80px; /* 上方大留白 左右 下 内边距 */
+      background: radial-gradient(ellipse at 50% 0%, rgba(0, 240, 255, 0.06) 0%, transparent 60%), var(--bg); /* 顶部青色径向光晕 */
+      position: relative; /* 相对定位，用于伪元素 */
     } /* 结束 Hero 样式 */
 
+    .hero::before { /* Hero 装饰：顶部水平光线 */
+      content: ''; /* 伪元素必须有 content */
+      position: absolute; /* 绝对定位 */
+      top: 0; /* 顶部 */
+      left: 50%; /* 水平居中 */
+      transform: translateX(-50%); /* 居中修正 */
+      width: 400px; /* 光线宽度 */
+      height: 1px; /* 光线厚度 */
+      background: linear-gradient(90deg, transparent, var(--primary), transparent); /* 渐变光线 */
+      opacity: 0.5; /* 半透明 */
+    } /* 结束 Hero 装饰 */
+
     .hero h1 { /* Hero 标题 */
-      font-size: 48px; /* 大号字体 */
-      color: #ff6d00; /* 暗橙 */
-      margin-bottom: 16px; /* 底部间距 */
-      text-shadow: 0 0 30px rgba(255, 109, 0, 0.3); /* 橙色光晕 */
+      font-size: 56px; /* 超大字体，Apple 风格 */
+      font-weight: 800; /* 特粗体 */
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); /* 青紫粉渐变 */
+      -webkit-background-clip: text; /* 文字裁剪背景（WebKit） */
+      background-clip: text; /* 文字裁剪背景（标准） */
+      -webkit-text-fill-color: transparent; /* 透明填充，显示渐变 */
+      margin-bottom: 20px; /* 底部间距 */
+      letter-spacing: -1px; /* 微调字间距 */
+      line-height: 1.2; /* 紧凑行高 */
     } /* 结束 Hero 标题样式 */
 
     .hero p { /* Hero 描述文字 */
       font-size: 18px; /* 中号字体 */
-      color: #d4a574; /* 中等暖色 */
-      max-width: 600px; /* 最大宽度 */
-      margin: 0 auto 30px; /* 居中并添加底部间距 */
+      color: var(--text-secondary); /* 中等蓝白 */
+      max-width: 560px; /* 最大宽度，控制阅读宽度 */
+      margin: 0 auto 48px; /* 居中并添加底部间距 */
+      line-height: 1.8; /* 行高 */
     } /* 结束 Hero 描述样式 */
 
     .hero .stats { /* 统计数据区域 */
       display: flex; /* 弹性布局 */
       justify-content: center; /* 水平居中 */
-      gap: 48px; /* 间距 */
+      gap: 64px; /* 大间距，Apple 风格留白 */
       flex-wrap: wrap; /* 允许换行 */
     } /* 结束统计数据样式 */
 
-    .hero .stats .stat-item { /* 单个统计项 */
+    .hero .stat-item { /* 单个统计项 */
       text-align: center; /* 文字居中 */
     } /* 结束统计项样式 */
 
-    .hero .stats .stat-number { /* 统计数字 */
+    .hero .stat-number { /* 统计数字 */
       display: block; /* 块级显示 */
-      font-size: 36px; /* 大号字体 */
+      font-family: 'JetBrains Mono', monospace; /* 等宽字体 */
+      font-size: 40px; /* 大号字体 */
       font-weight: 700; /* 加粗 */
-      color: #ffab40; /* 亮橙色 */
+      color: var(--primary); /* 霓虹青 */
+      text-shadow: 0 0 30px rgba(0, 240, 255, 0.3); /* 青色光晕 */
     } /* 结束统计数字样式 */
 
-    .hero .stats .stat-label { /* 统计标签 */
-      font-size: 14px; /* 小号字体 */
-      color: #d4a574; /* 中等暖色 */
+    .hero .stat-label { /* 统计标签 */
+      font-size: 13px; /* 小号字体 */
+      color: var(--muted); /* 灰紫色 */
+      margin-top: 4px; /* 顶部间距 */
+      letter-spacing: 1px; /* 字间距 */
+      text-transform: uppercase; /* 大写字母 */
     } /* 结束统计标签样式 */
+
+    /* ========== 分割线装饰 ========== */
+    .divider { /* 分割线 */
+      max-width: 1100px; /* 最大宽度 */
+      margin: 0 auto; /* 居中 */
+      height: 1px; /* 细线 */
+      background: linear-gradient(90deg, transparent, var(--border), var(--primary-dim), var(--border), transparent); /* 渐变分割线，中间带青色光 */
+    } /* 结束分割线样式 */
 
     /* ========== 筛选栏 ========== */
     .filter-bar { /* 筛选栏容器 */
       display: flex; /* 弹性布局 */
       justify-content: center; /* 水平居中 */
-      gap: 12px; /* 按钮间距 */
-      padding: 24px 20px; /* 上下左右内边距 */
+      gap: 10px; /* 按钮间距 */
+      padding: 40px 20px 32px; /* 上方大留白 左右 下方内边距 */
       flex-wrap: wrap; /* 允许换行 */
     } /* 结束筛选栏样式 */
 
     .filter-btn { /* 筛选按钮 */
-      padding: 8px 20px; /* 内边距 */
-      border: 1px solid #3a2a1b; /* 暗橙边框 */
+      padding: 10px 24px; /* 内边距 */
+      border: 1px solid var(--border); /* 暗紫边框 */
       background: transparent; /* 透明背景 */
-      color: #e6c9b8; /* 暖米色文字 */
-      border-radius: 20px; /* 圆角 */
+      color: var(--text-secondary); /* 中等蓝白文字 */
+      border-radius: var(--radius-full); /* 胶囊圆角 */
       cursor: pointer; /* 手型光标 */
       font-size: 14px; /* 字体大小 */
-      transition: all 0.3s; /* 全属性过渡 */
+      font-weight: 500; /* 中等粗细 */
+      font-family: inherit; /* 继承字体 */
+      transition: all var(--transition-base); /* 全属性过渡 */
+      letter-spacing: 0.5px; /* 微调字间距 */
     } /* 结束筛选按钮样式 */
 
-    .filter-btn:hover, /* 筛选按钮悬停 */
+    .filter-btn:hover { /* 筛选按钮悬停 */
+      border-color: var(--primary); /* 青色边框 */
+      color: var(--primary); /* 青色文字 */
+      background: var(--primary-dim); /* 半透明青色背景 */
+    } /* 结束按钮悬停 */
+
     .filter-btn.active { /* 筛选按钮激活 */
-      background-color: #ff6d00; /* 暗橙背景 */
-      color: #1a0f0a; /* 深色文字 */
-      border-color: #ff6d00; /* 暗橙边框 */
-    } /* 结束按钮交互样式 */
+      background: var(--primary); /* 青色实心背景 */
+      color: var(--bg); /* 深色文字 */
+      border-color: var(--primary); /* 青色边框 */
+      box-shadow: var(--shadow-glow-primary); /* 青色光晕阴影 */
+      font-weight: 600; /* 加粗 */
+    } /* 结束按钮激活 */
+
+    .filter-btn.bookmark-filter { /* 收藏筛选按钮 */
+      border-color: var(--secondary); /* 紫色边框 */
+    } /* 结束收藏筛选按钮 */
+
+    .filter-btn.bookmark-filter:hover { /* 收藏筛选按钮悬停 */
+      border-color: var(--secondary); /* 紫色边框 */
+      color: var(--secondary); /* 紫色文字 */
+      background: rgba(185, 103, 255, 0.1); /* 半透明紫色背景 */
+    } /* 结束收藏按钮悬停 */
+
+    .filter-btn.bookmark-filter.active { /* 收藏筛选按钮激活 */
+      background: var(--secondary); /* 紫色实心背景 */
+      color: var(--bg); /* 深色文字 */
+      border-color: var(--secondary); /* 紫色边框 */
+      box-shadow: var(--shadow-glow-secondary); /* 紫色光晕阴影 */
+    } /* 结束收藏按钮激活 */
 
     /* ========== 计划卡片网格 ========== */
     .plans-section { /* 计划区块 */
-      max-width: 1100px; /* 最大宽度 */
+      max-width: 1200px; /* 最大宽度 */
       margin: 0 auto; /* 水平居中 */
-      padding: 20px 20px 60px; /* 上 左右 下 内边距 */
+      padding: 12px 24px 80px; /* 上 左右 下 内边距 */
     } /* 结束计划区块样式 */
 
     .plans-grid { /* 卡片网格容器 */
       display: grid; /* 网格布局 */
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 自适应列宽 */
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* 自适应列宽，最小320px */
       gap: 24px; /* 网格间距 */
     } /* 结束网格容器样式 */
 
     .plan-card { /* 单个计划卡片 */
-      background: #1f140d; /* 深暖黑背景 */
-      border: 1px solid #3a2a1b; /* 暗橙边框 */
-      border-radius: 12px; /* 圆角 */
-      padding: 28px; /* 内边距 */
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* 多属性过渡 */
+      background: var(--card); /* 暗靛蓝背景 */
+      border: 1px solid var(--border); /* 暗紫边框 */
+      border-radius: var(--radius-md); /* 中圆角 */
+      padding: 32px; /* 内边距 */
+      transition: all var(--transition-base); /* 全属性过渡 */
+      position: relative; /* 相对定位，用于收藏按钮 */
+      overflow: hidden; /* 隐藏溢出，用于光效 */
     } /* 结束计划卡片样式 */
 
+    .plan-card::before { /* 卡片装饰：底部光线条 */
+      content: ''; /* 伪元素必须有 content */
+      position: absolute; /* 绝对定位 */
+      bottom: 0; /* 底部 */
+      left: 0; /* 左边 */
+      right: 0; /* 右边 */
+      height: 2px; /* 光线高度 */
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); /* 青紫粉渐变光线 */
+      opacity: 0; /* 默认不可见 */
+      transition: opacity var(--transition-base); /* 透明度过渡 */
+    } /* 结束卡片装饰 */
+
     .plan-card:hover { /* 卡片悬停效果 */
-      transform: translateY(-4px); /* 上浮4px */
-      border-color: #ff6d00; /* 暗橙边框 */
-      box-shadow: 0 8px 32px rgba(255, 109, 0, 0.12); /* 橙色阴影 */
+      transform: translateY(-6px); /* 上浮6px */
+      border-color: var(--primary-dim); /* 青色边框光晕 */
+      box-shadow: 0 12px 40px rgba(0, 240, 255, 0.08), 0 4px 16px rgba(185, 103, 255, 0.06); /* 多层光晕阴影 */
+      background: var(--card-hover); /* 悬停背景色 */
     } /* 结束悬停效果 */
+
+    .plan-card:hover::before { /* 悬停时显示底部光线 */
+      opacity: 1; /* 显示光线 */
+    } /* 结束悬停光线 */
+
+    .plan-card .card-top { /* 卡片顶部行（标签 + 收藏按钮） */
+      display: flex; /* 弹性布局 */
+      justify-content: space-between; /* 两端对齐 */
+      align-items: center; /* 垂直居中 */
+      margin-bottom: 16px; /* 底部间距 */
+    } /* 结束卡片顶部行 */
 
     .plan-card .tag { /* 难度标签 */
       display: inline-block; /* 行内块 */
-      padding: 3px 12px; /* 内边距 */
-      border-radius: 12px; /* 圆角 */
-      font-size: 12px; /* 小号字体 */
+      padding: 4px 14px; /* 内边距 */
+      border-radius: var(--radius-full); /* 胶囊圆角 */
+      font-size: 11px; /* 小号字体 */
       font-weight: 600; /* 半粗体 */
-      margin-bottom: 12px; /* 底部间距 */
+      letter-spacing: 0.5px; /* 微调字间距 */
+      text-transform: uppercase; /* 大写字母 */
     } /* 结束标签样式 */
 
     .tag.beginner { /* 初级标签 */
-      background: rgba(255, 109, 0, 0.15); /* 浅橙半透明背景 */
-      color: #ffab40; /* 亮橙文字 */
+      background: rgba(5, 255, 161, 0.12); /* 半透明绿色背景 */
+      color: var(--highlight); /* 霓虹绿 */
+      border: 1px solid rgba(5, 255, 161, 0.2); /* 绿色边框 */
     } /* 结束初级标签 */
 
     .tag.intermediate { /* 中级标签 */
-      background: rgba(255, 193, 7, 0.15); /* 浅黄半透明背景 */
-      color: #ffd54f; /* 黄色文字 */
+      background: rgba(255, 213, 79, 0.12); /* 半透明黄色背景 */
+      color: var(--warning); /* 黄色文字 */
+      border: 1px solid rgba(255, 213, 79, 0.2); /* 黄色边框 */
     } /* 结束中级标签 */
 
     .tag.advanced { /* 高级标签 */
-      background: rgba(244, 67, 54, 0.15); /* 浅红半透明背景 */
-      color: #ef5350; /* 红色文字 */
+      background: rgba(255, 0, 193, 0.12); /* 半透明粉色背景 */
+      color: var(--accent); /* 霓虹粉 */
+      border: 1px solid rgba(255, 0, 193, 0.2); /* 粉色边框 */
     } /* 结束高级标签 */
+
+    /* ========== 收藏按钮 ========== */
+    .bookmark-btn { /* 收藏按钮 */
+      background: none; /* 无背景 */
+      border: none; /* 无边框 */
+      cursor: pointer; /* 手型光标 */
+      padding: 6px; /* 内边距 */
+      display: flex; /* 弹性布局 */
+      align-items: center; /* 垂直居中 */
+      justify-content: center; /* 水平居中 */
+      color: var(--muted); /* 默认灰色 */
+      transition: all var(--transition-base); /* 全属性过渡 */
+      border-radius: var(--radius-sm); /* 小圆角 */
+    } /* 结束收藏按钮样式 */
+
+    .bookmark-btn:hover { /* 收藏按钮悬停 */
+      color: var(--secondary); /* 紫色 */
+      background: rgba(185, 103, 255, 0.1); /* 半透明紫色背景 */
+    } /* 结束收藏按钮悬停 */
+
+    .bookmark-btn.active { /* 收藏按钮激活（已收藏） */
+      color: var(--secondary); /* 紫色 */
+    } /* 结束收藏按钮激活 */
+
+    .bookmark-btn .iconify { /* 收藏按钮内的图标 */
+      font-size: 22px; /* 图标大小 */
+    } /* 结束收藏按钮图标 */
 
     .plan-card h3 { /* 卡片标题 */
       font-size: 20px; /* 中号字体 */
-      color: #e0e0e0; /* 近白色文字 */
-      margin-bottom: 8px; /* 底部间距 */
+      font-weight: 700; /* 加粗 */
+      color: var(--text); /* 浅蓝白 */
+      margin-bottom: 10px; /* 底部间距 */
     } /* 结束卡片标题样式 */
 
     .plan-card .description { /* 卡片描述 */
       font-size: 14px; /* 小号字体 */
-      color: #d4a574; /* 中等暖色 */
-      margin-bottom: 16px; /* 底部间距 */
-      line-height: 1.5; /* 行高 */
+      color: var(--text-secondary); /* 中等蓝白 */
+      margin-bottom: 20px; /* 底部间距 */
+      line-height: 1.7; /* 行高 */
     } /* 结束卡片描述样式 */
 
     .plan-card .meta { /* 卡片元信息 */
       display: flex; /* 弹性布局 */
-      gap: 16px; /* 间距 */
+      gap: 20px; /* 间距 */
       font-size: 13px; /* 小号字体 */
-      color: #c48b5c; /* 中暖色 */
+      color: var(--muted); /* 灰紫色 */
     } /* 结束元信息样式 */
 
     .plan-card .meta span { /* 元信息单项 */
       display: flex; /* 弹性布局 */
       align-items: center; /* 垂直居中 */
-      gap: 4px; /* 图标与文字间距 */
+      gap: 6px; /* 图标与文字间距 */
     } /* 结束元信息单项样式 */
 
-    /* ========== Lucide 图标样式 ========== */
-    [data-lucide] { /* Lucide 图标容器 */
-      display: inline-block; /* 行内块显示 */
-      width: 16px; /* 默认宽度 */
-      height: 16px; /* 默认高度 */
-      vertical-align: text-bottom; /* 与文字底部对齐 */
-      stroke: currentColor; /* 描边颜色继承父元素 */
-      stroke-width: 2; /* 描边宽度 */
-      stroke-linecap: round; /* 线帽圆角 */
-      stroke-linejoin: round; /* 连接处圆角 */
-      fill: none; /* 无填充 */
-    } /* 结束 Lucide 图标基础样式 */
-
-    .case-block [data-lucide] { /* 案例区块中的图标 */
-      width: 18px; /* 略大宽度 */
-      height: 18px; /* 略大高度 */
-      vertical-align: text-bottom; /* 与文字底部对齐 */
-      margin-right: 4px; /* 右侧间距 */
-    } /* 结束案例区块图标样式 */
-
-    /* ========== 页脚 ========== */
-    .footer { /* 页脚容器 */
-      text-align: center; /* 文字居中 */
-      padding: 40px 20px; /* 内边距 */
-      border-top: 1px solid #3a2a1b; /* 顶部边框 */
-      color: #7c5c4a; /* 暗暖文字 */
-      font-size: 14px; /* 字体大小 */
-    } /* 结束页脚样式 */
-
-    .footer a { /* 页脚链接 */
-      color: #ffab40; /* 亮橙色 */
-      text-decoration: none; /* 去除下划线 */
-    } /* 结束页脚链接样式 */
+    .plan-card .meta .iconify { /* 元信息中的图标 */
+      font-size: 16px; /* 图标大小 */
+      color: var(--primary); /* 霓虹青 */
+    } /* 结束元信息图标 */
 
     /* ========== 成功案例区域 ========== */
     .success-section { /* 成功案例区块 */
-      max-width: 1100px; /* 最大宽度 */
+      max-width: 1200px; /* 最大宽度 */
       margin: 0 auto; /* 水平居中 */
-      padding: 40px 20px 60px; /* 上 左右 下 内边距 */
+      padding: 80px 24px; /* 上下大留白 左右内边距 */
     } /* 结束成功案例区块 */
 
     .section-title { /* 区块标题 */
       text-align: center; /* 文字居中 */
-      font-size: 32px; /* 大号字体 */
-      color: #ff6d00; /* 暗橙 */
-      margin-bottom: 8px; /* 底部间距 */
+      font-size: 36px; /* 大号字体 */
+      font-weight: 800; /* 特粗体 */
+      color: var(--text); /* 浅蓝白 */
+      margin-bottom: 10px; /* 底部间距 */
     } /* 结束区块标题 */
 
     .section-subtitle { /* 区块副标题 */
       text-align: center; /* 文字居中 */
       font-size: 16px; /* 中号字体 */
-      color: #d4a574; /* 中等暖色 */
-      margin-bottom: 40px; /* 底部间距 */
+      color: var(--muted); /* 灰紫色 */
+      margin-bottom: 56px; /* 大底部间距，Apple 风格 */
     } /* 结束区块副标题 */
 
     .case-card { /* 单个案例卡片 */
-      background: #1f140d; /* 深暖黑背景 */
-      border: 1px solid #3a2a1b; /* 暗橙边框 */
-      border-radius: 12px; /* 圆角 */
-      padding: 32px; /* 内边距 */
-      margin-bottom: 24px; /* 底部间距 */
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* 多属性过渡 */
+      background: var(--card); /* 暗靛蓝背景 */
+      border: 1px solid var(--border); /* 暗紫边框 */
+      border-radius: var(--radius-lg); /* 大圆角 */
+      padding: 36px; /* 内边距 */
+      margin-bottom: 28px; /* 底部间距 */
+      transition: all var(--transition-base); /* 全属性过渡 */
     } /* 结束案例卡片 */
 
     .case-card:hover { /* 案例卡片悬停 */
-      transform: translateY(-4px); /* 上浮效果 */
-      border-color: #ff6d00; /* 暗橙边框 */
-      box-shadow: 0 8px 32px rgba(255, 109, 0, 0.12); /* 橙色阴影 */
+      border-color: var(--primary-dim); /* 青色边框光晕 */
+      box-shadow: var(--shadow-glow-primary); /* 青色光晕 */
     } /* 结束案例悬停 */
 
     .case-card .case-header { /* 案例头部 */
       display: flex; /* 弹性布局 */
       justify-content: space-between; /* 两端对齐 */
       align-items: center; /* 垂直居中 */
-      margin-bottom: 20px; /* 底部间距 */
+      margin-bottom: 24px; /* 底部间距 */
       flex-wrap: wrap; /* 允许换行 */
       gap: 12px; /* 间距 */
     } /* 结束案例头部 */
 
     .case-card .case-title { /* 案例标题 */
       font-size: 22px; /* 大号字体 */
-      color: #e0e0e0; /* 近白色 */
       font-weight: 700; /* 加粗 */
+      color: var(--text); /* 浅蓝白 */
     } /* 结束案例标题 */
 
     .case-card .case-tag { /* 案例行业标签 */
-      display: inline-block; /* 行内块 */
-      padding: 4px 14px; /* 内边距 */
-      border-radius: 16px; /* 圆角 */
-      font-size: 13px; /* 小号字体 */
+      padding: 6px 16px; /* 内边距 */
+      border-radius: var(--radius-full); /* 胶囊圆角 */
+      font-size: 12px; /* 小号字体 */
       font-weight: 600; /* 半粗体 */
-      background: rgba(255, 109, 0, 0.15); /* 浅橙半透明背景 */
-      color: #ffab40; /* 亮橙文字 */
+      background: rgba(185, 103, 255, 0.1); /* 半透明紫色背景 */
+      color: var(--secondary); /* 霓虹紫 */
+      border: 1px solid rgba(185, 103, 255, 0.2); /* 紫色边框 */
     } /* 结束案例标签 */
 
     .case-card .case-body { /* 案例主体内容 */
       display: grid; /* 网格布局 */
       grid-template-columns: 1fr 1fr 1fr; /* 三列等宽 */
-      gap: 24px; /* 网格间距 */
+      gap: 20px; /* 网格间距 */
     } /* 结束案例主体 */
 
     .case-card .case-block { /* 案例内容块（问题/方案/收益） */
-      padding: 16px; /* 内边距 */
-      background: rgba(26, 15, 10, 0.6); /* 半透明深色背景 */
-      border-radius: 8px; /* 圆角 */
-      border-left: 3px solid #3a2a1b; /* 左侧边框 */
+      padding: 20px; /* 内边距 */
+      background: rgba(10, 10, 26, 0.6); /* 半透明深蓝背景 */
+      border-radius: var(--radius-sm); /* 小圆角 */
+      border-left: 3px solid var(--border); /* 左侧边框 */
     } /* 结束内容块 */
 
     .case-card .case-block.problem { /* 问题块 */
-      border-left-color: #ef5350; /* 红色边框表示问题 */
+      border-left-color: var(--accent); /* 粉色边框表示问题 */
     } /* 结束问题块 */
 
     .case-card .case-block.solution { /* 方案块 */
-      border-left-color: #ff6d00; /* 橙色边框表示方案 */
+      border-left-color: var(--primary); /* 青色边框表示方案 */
     } /* 结束方案块 */
 
     .case-card .case-block.benefit { /* 收益块 */
-      border-left-color: #ffab40; /* 亮橙边框表示收益 */
+      border-left-color: var(--highlight); /* 绿色边框表示收益 */
     } /* 结束收益块 */
 
     .case-card .case-block h4 { /* 内容块标题 */
-      font-size: 15px; /* 中号字体 */
+      font-size: 14px; /* 中号字体 */
       margin-bottom: 10px; /* 底部间距 */
       font-weight: 600; /* 半粗体 */
+      display: flex; /* 弹性布局 */
+      align-items: center; /* 垂直居中 */
+      gap: 8px; /* 图标与文字间距 */
     } /* 结束内容块标题 */
 
+    .case-card .case-block h4 .iconify { /* 内容块标题图标 */
+      font-size: 18px; /* 图标大小 */
+    } /* 结束标题图标 */
+
     .case-card .case-block.problem h4 { /* 问题标题 */
-      color: #ef5350; /* 红色 */
+      color: var(--accent); /* 霓虹粉 */
     } /* 结束问题标题 */
 
     .case-card .case-block.solution h4 { /* 方案标题 */
-      color: #ff6d00; /* 暗橙 */
+      color: var(--primary); /* 霓虹青 */
     } /* 结束方案标题 */
 
     .case-card .case-block.benefit h4 { /* 收益标题 */
-      color: #ffab40; /* 亮橙 */
+      color: var(--highlight); /* 霓虹绿 */
     } /* 结束收益标题 */
 
     .case-card .case-block p { /* 内容块文字 */
       font-size: 14px; /* 小号字体 */
-      color: #e6c9b8; /* 暖米色文字 */
-      line-height: 1.6; /* 行高 */
+      color: var(--text-secondary); /* 中等蓝白 */
+      line-height: 1.7; /* 行高 */
     } /* 结束内容块文字 */
 
     .case-card .case-metrics { /* 指标数据区域 */
       display: flex; /* 弹性布局 */
-      gap: 32px; /* 间距 */
-      margin-top: 20px; /* 顶部间距 */
-      padding-top: 16px; /* 上内边距 */
-      border-top: 1px solid #3a2a1b; /* 顶部边框分隔线 */
+      gap: 40px; /* 间距 */
+      margin-top: 24px; /* 顶部间距 */
+      padding-top: 20px; /* 上内边距 */
+      border-top: 1px solid var(--border); /* 顶部边框分隔线 */
       flex-wrap: wrap; /* 允许换行 */
     } /* 结束指标区域 */
 
@@ -368,108 +519,149 @@
 
     .case-card .metric-value { /* 指标数值 */
       display: block; /* 块级显示 */
+      font-family: 'JetBrains Mono', monospace; /* 等宽字体 */
       font-size: 24px; /* 大号字体 */
       font-weight: 700; /* 加粗 */
-      color: #ffab40; /* 亮橙色 */
+      color: var(--primary); /* 霓虹青 */
     } /* 结束指标数值 */
 
     .case-card .metric-label { /* 指标标签 */
       font-size: 12px; /* 小号字体 */
-      color: #d4a574; /* 中等暖色 */
+      color: var(--muted); /* 灰紫色 */
       margin-top: 4px; /* 顶部间距 */
     } /* 结束指标标签 */
 
-    /* ========== 成功案例响应式 ========== */
-    @media (max-width: 768px) { /* 平板及以下：案例卡片 */
-      .case-card .case-body { /* 案例主体 */
-        grid-template-columns: 1fr; /* 单列布局 */
-      } /* 结束案例主体响应式 */
+    /* ========== 页脚 ========== */
+    .footer { /* 页脚容器 */
+      text-align: center; /* 文字居中 */
+      padding: 48px 20px; /* 大内边距 */
+      border-top: 1px solid var(--border); /* 顶部边框 */
+      color: var(--muted); /* 灰紫色文字 */
+      font-size: 14px; /* 字体大小 */
+    } /* 结束页脚样式 */
 
-      .case-card .case-metrics { /* 指标区域 */
-        gap: 20px; /* 缩小间距 */
-      } /* 结束指标响应式 */
+    .footer a { /* 页脚链接 */
+      color: var(--primary); /* 霓虹青 */
+      text-decoration: none; /* 去除下划线 */
+      transition: color var(--transition-base); /* 颜色过渡 */
+    } /* 结束页脚链接样式 */
 
-      .section-title { /* 区块标题 */
-        font-size: 26px; /* 缩小字体 */
-      } /* 结束区块标题响应式 */
-    } /* 结束平板案例响应式 */
+    .footer a:hover { /* 页脚链接悬停 */
+      color: var(--secondary); /* 霓虹紫 */
+    } /* 结束页脚链接悬停 */
 
     /* ========== 响应式适配 ========== */
     @media (max-width: 768px) { /* 平板及以下屏幕 */
+      .navbar { /* 导航栏 */
+        padding: 14px 20px; /* 缩小内边距 */
+      } /* 结束导航栏响应式 */
+
+      .hero { /* Hero 区域 */
+        padding: 80px 20px 60px; /* 缩小内边距 */
+      } /* 结束 Hero 响应式 */
+
       .hero h1 { /* Hero 标题 */
-        font-size: 32px; /* 缩小字体 */
+        font-size: 36px; /* 缩小字体 */
       } /* 结束响应式标题 */
 
       .hero .stats { /* 统计区域 */
-        gap: 24px; /* 缩小间距 */
+        gap: 32px; /* 缩小间距 */
       } /* 结束响应式统计 */
 
-      .hero .stats .stat-number { /* 统计数字 */
-        font-size: 28px; /* 缩小字体 */
+      .hero .stat-number { /* 统计数字 */
+        font-size: 30px; /* 缩小字体 */
       } /* 结束响应式数字 */
 
       .plans-grid { /* 网格容器 */
         grid-template-columns: 1fr; /* 单列布局 */
       } /* 结束响应式网格 */
 
-      .navbar { /* 导航栏 */
-        padding: 12px 16px; /* 缩小内边距 */
-      } /* 结束响应式导航 */
+      .section-title { /* 区块标题 */
+        font-size: 28px; /* 缩小字体 */
+      } /* 结束区块标题响应式 */
+
+      .case-card .case-body { /* 案例主体 */
+        grid-template-columns: 1fr; /* 单列布局 */
+      } /* 结束案例主体响应式 */
+
+      .case-card .case-metrics { /* 指标区域 */
+        gap: 24px; /* 缩小间距 */
+      } /* 结束指标响应式 */
     } /* 结束平板响应式 */
 
     @media (max-width: 480px) { /* 手机屏幕 */
       .hero h1 { /* Hero 标题 */
-        font-size: 26px; /* 进一步缩小 */
+        font-size: 28px; /* 进一步缩小 */
       } /* 结束手机标题 */
+
+      .hero p { /* Hero 描述 */
+        font-size: 15px; /* 缩小字体 */
+      } /* 结束手机描述 */
 
       .filter-bar { /* 筛选栏 */
         gap: 8px; /* 缩小按钮间距 */
       } /* 结束手机筛选 */
 
       .filter-btn { /* 筛选按钮 */
-        padding: 6px 14px; /* 缩小内边距 */
+        padding: 8px 16px; /* 缩小内边距 */
         font-size: 13px; /* 缩小字体 */
       } /* 结束手机按钮 */
+
+      .plan-card { /* 计划卡片 */
+        padding: 24px; /* 缩小内边距 */
+      } /* 结束手机卡片 */
     } /* 结束手机响应式 */
+
+    /* ========== 隐藏/显示动画辅助类 ========== */
+    .plan-card.hidden { /* 隐藏的卡片 */
+      display: none; /* 不显示且不占空间 */
+    } /* 结束隐藏卡片样式 */
   </style> <!-- 结束样式 -->
 </head> <!-- 结束头部 -->
 <body> <!-- 页面主体开始 -->
 
   <!-- ========== 导航栏 ========== -->
-  <div class="navbar"> <!-- 导航栏容器 -->
-    <div class="logo">/* CODING PLAN */</div> <!-- Logo 文字 -->
+  <div class="navbar" id="navbar"> <!-- 导航栏容器 -->
+    <a href="#" class="logo">&lt;/CODING PLAN&gt;</a> <!-- Logo 文字，使用代码风格括号 -->
     <nav> <!-- 导航链接区域 -->
-      <a href="#plans">计划列表</a> <!-- 计划列表锚点 -->
-      <a href="#about">关于</a> <!-- 关于锚点 -->
+      <a href="#plans">学习计划</a> <!-- 计划列表锚点 -->
+      <a href="#success">成功案例</a> <!-- 成功案例锚点 -->
     </nav> <!-- 结束导航 -->
   </div> <!-- 结束导航栏 -->
 
   <!-- ========== Hero 区域 ========== -->
   <section class="hero"> <!-- Hero 主视觉 -->
-    <h1>系统化编程学习计划（福利版）</h1> <!-- 主标题 -->
-    <p>从零到一，精心设计的学习路径，助你高效掌握编程技能。选择适合你的计划，开启编码之旅。</p> <!-- 副标题 -->
+    <p data-aos="fade-up" style="color: var(--warning); font-size: 16px; font-weight: 600; margin-bottom: 24px; letter-spacing: 1px;">⚠️ 测试版请勿支付</p> <!-- 测试版本提示，警告用户不要支付 -->
+    <h1 data-aos="fade-up" data-aos-delay="50">系统化编程学习计划</h1> <!-- 主标题，AOS 淡入上滑动画 -->
+    <p data-aos="fade-up" data-aos-delay="100">从零到一，精心设计的学习路径，助你高效掌握编程技能。<br>选择适合你的计划，开启编码之旅。</p> <!-- 副标题，延迟100ms动画 -->
     <div class="stats"> <!-- 统计数据 -->
-      <div class="stat-item"> <!-- 统计项1 -->
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200"> <!-- 统计项1，延迟200ms -->
         <span class="stat-number">9</span> <!-- 数字 -->
         <span class="stat-label">学习计划</span> <!-- 标签 -->
       </div> <!-- 结束统计项1 -->
-      <div class="stat-item"> <!-- 统计项2 -->
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300"> <!-- 统计项2，延迟300ms -->
         <span class="stat-number">120+</span> <!-- 数字 -->
         <span class="stat-label">练习项目</span> <!-- 标签 -->
       </div> <!-- 结束统计项2 -->
-      <div class="stat-item"> <!-- 统计项3 -->
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="400"> <!-- 统计项3，延迟400ms -->
         <span class="stat-number">500h</span> <!-- 数字 -->
         <span class="stat-label">学习内容</span> <!-- 标签 -->
       </div> <!-- 结束统计项3 -->
     </div> <!-- 结束统计数据 -->
   </section> <!-- 结束 Hero -->
 
+  <div class="divider"></div> <!-- 分割线装饰 -->
+
   <!-- ========== 筛选栏 ========== -->
   <div class="filter-bar" id="filterBar"> <!-- 筛选按钮组 -->
-    <button class="filter-btn active" onclick="filterPlans('all', event)">全部</button> <!-- 全部筛选 -->
-    <button class="filter-btn" onclick="filterPlans('beginner', event)">入门</button> <!-- 入门筛选 -->
-    <button class="filter-btn" onclick="filterPlans('intermediate', event)">进阶</button> <!-- 进阶筛选 -->
-    <button class="filter-btn" onclick="filterPlans('advanced', event)">高级</button> <!-- 高级筛选 -->
+    <button class="filter-btn active" onclick="filterPlans('all', event)" data-aos="fade-up" data-aos-delay="0">全部</button> <!-- 全部筛选 -->
+    <button class="filter-btn" onclick="filterPlans('beginner', event)" data-aos="fade-up" data-aos-delay="50">入门</button> <!-- 入门筛选 -->
+    <button class="filter-btn" onclick="filterPlans('intermediate', event)" data-aos="fade-up" data-aos-delay="100">进阶</button> <!-- 进阶筛选 -->
+    <button class="filter-btn" onclick="filterPlans('advanced', event)" data-aos="fade-up" data-aos-delay="150">高级</button> <!-- 高级筛选 -->
+    <button class="filter-btn bookmark-filter" onclick="filterPlans('bookmarked', event)" data-aos="fade-up" data-aos-delay="200"> <!-- 收藏筛选 -->
+      <span class="iconify" data-icon="solar:bookmark-bold-duotone" style="font-size:14px; vertical-align:middle;"></span> <!-- 书签图标 -->
+      已收藏
+    </button> <!-- 结束收藏筛选 -->
   </div> <!-- 结束筛选栏 -->
 
   <!-- ========== 计划卡片网格 ========== -->
@@ -477,129 +669,176 @@
     <div class="plans-grid" id="plansGrid"> <!-- 网格容器 -->
 
       <!-- 卡片1: Python 基础 -->
-      <div class="plan-card" data-level="beginner"> <!-- Python 入门卡片 -->
-        <span class="tag beginner">入门</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="beginner" data-plan-id="python-basics" data-aos="fade-up"> <!-- Python 入门卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag beginner">入门</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('python-basics', this)" title="收藏此计划" aria-label="收藏 Python 编程基础"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>Python 编程基础</h3> <!-- 计划标题 -->
         <p class="description">从变量、数据类型到函数与模块，零基础掌握 Python 核心语法与编程思维。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 40 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 15 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 40 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 15 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 Python 卡片 -->
 
       <!-- 卡片2: HTML/CSS -->
-      <div class="plan-card" data-level="beginner"> <!-- HTML/CSS 卡片 -->
-        <span class="tag beginner">入门</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="beginner" data-plan-id="html-css" data-aos="fade-up" data-aos-delay="50"> <!-- HTML/CSS 卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag beginner">入门</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('html-css', this)" title="收藏此计划" aria-label="收藏 HTML & CSS 网页开发"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>HTML & CSS 网页开发</h3> <!-- 计划标题 -->
         <p class="description">学习网页结构与样式基础，从语义化标签到 Flexbox 与 Grid 布局实战。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 30 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 12 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 30 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 12 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 HTML/CSS 卡片 -->
 
       <!-- 卡片3: JavaScript 入门 -->
-      <div class="plan-card" data-level="beginner"> <!-- JavaScript 入门卡片 -->
-        <span class="tag beginner">入门</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="beginner" data-plan-id="js-core" data-aos="fade-up" data-aos-delay="100"> <!-- JavaScript 入门卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag beginner">入门</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('js-core', this)" title="收藏此计划" aria-label="收藏 JavaScript 核心入门"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>JavaScript 核心入门</h3> <!-- 计划标题 -->
         <p class="description">掌握 JS 基础语法、DOM 操作、事件处理与异步编程，构建交互式网页。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 50 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 18 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 50 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 18 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 JS 入门卡片 -->
 
       <!-- 卡片4: React 进阶 -->
-      <div class="plan-card" data-level="intermediate"> <!-- React 进阶卡片 -->
-        <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="intermediate" data-plan-id="react-dev" data-aos="fade-up"> <!-- React 进阶卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('react-dev', this)" title="收藏此计划" aria-label="收藏 React 组件化开发"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>React 组件化开发</h3> <!-- 计划标题 -->
         <p class="description">深入学习 React Hooks、状态管理与组件设计模式，打造现代前端应用。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 60 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 10 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 60 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 10 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 React 卡片 -->
 
       <!-- 卡片5: Node.js 后端 -->
-      <div class="plan-card" data-level="intermediate"> <!-- Node.js 卡片 -->
-        <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="intermediate" data-plan-id="nodejs" data-aos="fade-up" data-aos-delay="50"> <!-- Node.js 卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('nodejs', this)" title="收藏此计划" aria-label="收藏 Node.js 服务端开发"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>Node.js 服务端开发</h3> <!-- 计划标题 -->
         <p class="description">使用 Express/Koa 构建后端 API，学习数据库操作、中间件与 RESTful 设计。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 55 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 8 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 55 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 8 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 Node.js 卡片 -->
 
       <!-- 卡片6: 数据结构与算法 -->
-      <div class="plan-card" data-level="intermediate"> <!-- 算法卡片 -->
-        <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="intermediate" data-plan-id="dsa" data-aos="fade-up" data-aos-delay="100"> <!-- 算法卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag intermediate">进阶</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('dsa', this)" title="收藏此计划" aria-label="收藏数据结构与算法"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>数据结构与算法</h3> <!-- 计划标题 -->
         <p class="description">系统学习数组、链表、树、图等核心数据结构与排序、搜索等经典算法。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 70 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 50+ 道题</span> <!-- 练习数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 70 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 50+ 道题</span> <!-- 练习数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束算法卡片 -->
 
       <!-- 卡片7: 系统设计 -->
-      <div class="plan-card" data-level="advanced"> <!-- 系统设计卡片 -->
-        <span class="tag advanced">高级</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="advanced" data-plan-id="sys-design" data-aos="fade-up"> <!-- 系统设计卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag advanced">高级</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('sys-design', this)" title="收藏此计划" aria-label="收藏分布式系统设计"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>分布式系统设计</h3> <!-- 计划标题 -->
         <p class="description">掌握高可用架构设计、微服务、消息队列与分布式缓存等高级主题。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 80 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 6 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 80 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 6 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束系统设计卡片 -->
 
       <!-- 卡片8: 性能优化 -->
-      <div class="plan-card" data-level="advanced"> <!-- 性能优化卡片 -->
-        <span class="tag advanced">高级</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="advanced" data-plan-id="perf" data-aos="fade-up" data-aos-delay="50"> <!-- 性能优化卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag advanced">高级</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('perf', this)" title="收藏此计划" aria-label="收藏前端性能优化"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>前端性能优化</h3> <!-- 计划标题 -->
         <p class="description">深入渲染优化、代码分割、懒加载与 Core Web Vitals，打造极致用户体验。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 45 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 5 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 45 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 5 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束性能优化卡片 -->
 
       <!-- 卡片9: DevOps -->
-      <div class="plan-card" data-level="advanced"> <!-- DevOps 卡片 -->
-        <span class="tag advanced">高级</span> <!-- 难度标签 -->
+      <div class="plan-card" data-level="advanced" data-plan-id="devops" data-aos="fade-up" data-aos-delay="100"> <!-- DevOps 卡片 -->
+        <div class="card-top"> <!-- 卡片顶部行 -->
+          <span class="tag advanced">高级</span> <!-- 难度标签 -->
+          <button class="bookmark-btn" onclick="toggleBookmark('devops', this)" title="收藏此计划" aria-label="收藏 DevOps 工程实践"> <!-- 收藏按钮 -->
+            <span class="iconify" data-icon="solar:bookmark-line-duotone"></span> <!-- 未收藏状态图标 -->
+          </button> <!-- 结束收藏按钮 -->
+        </div> <!-- 结束卡片顶部 -->
         <h3>DevOps 工程实践</h3> <!-- 计划标题 -->
         <p class="description">CI/CD 流水线、Docker 容器化、Kubernetes 编排与监控告警体系实战。</p> <!-- 计划描述 -->
         <div class="meta"> <!-- 元信息 -->
-          <span><i data-lucide="clock"></i> 70 小时</span> <!-- 预计时长，使用 Lucide clock 图标 -->
-          <span><i data-lucide="clipboard-list"></i> 7 个项目</span> <!-- 项目数量，使用 Lucide clipboard-list 图标 -->
+          <span><span class="iconify" data-icon="solar:clock-circle-bold-duotone"></span> 70 小时</span> <!-- 预计时长 -->
+          <span><span class="iconify" data-icon="solar:clipboard-list-bold-duotone"></span> 7 个项目</span> <!-- 项目数量 -->
         </div> <!-- 结束元信息 -->
       </div> <!-- 结束 DevOps 卡片 -->
 
     </div> <!-- 结束网格容器 -->
   </section> <!-- 结束计划区域 -->
 
+  <div class="divider"></div> <!-- 分割线装饰 -->
+
   <!-- ========== 成功案例区域 ========== -->
-  <section class="success-section" id="success" aria-labelledby="success-title"> <!-- 成功案例区块，使用 ARIA 关联标题 -->
-    <h2 class="section-title" id="success-title">成功案例</h2> <!-- 区块标题 -->
-    <p class="section-subtitle">看看 CodingPlan 学员如何突破传统学习瓶颈，实现职业跃迁</p> <!-- 区块副标题 -->
+  <section class="success-section" id="success" aria-labelledby="success-title"> <!-- 成功案例区块 -->
+    <h2 class="section-title" id="success-title" data-aos="fade-up">成功案例</h2> <!-- 区块标题 -->
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">看看 CodingPlan 学员如何突破传统学习瓶颈，实现职业跃迁</p> <!-- 区块副标题 -->
 
     <!-- 案例卡片1: 电商平台重构 -->
-    <article class="case-card" role="article" aria-label="电商平台重构成功案例"> <!-- 案例卡片1 -->
+    <article class="case-card" data-aos="fade-up" data-aos-delay="100"> <!-- 案例卡片1 -->
       <div class="case-header"> <!-- 案例头部 -->
         <h3 class="case-title">电商平台全栈重构</h3> <!-- 案例标题 -->
         <span class="case-tag">电商行业</span> <!-- 行业标签 -->
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体：三列布局 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
+          <h4><span class="iconify" data-icon="solar:danger-triangle-bold-duotone"></span> 痛点</h4> <!-- 问题标题 -->
           <p>传统自学需 6+ 个月，碎片化学习导致知识断层，无法独立完成前后端联调，面试屡屡碰壁。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
-        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
+        <div class="case-block solution" role="region" aria-label="解决方案"> <!-- 方案列 -->
+          <h4><span class="iconify" data-icon="solar:lightbulb-bolt-bold-duotone"></span> 方案</h4> <!-- 方案标题 -->
           <p>通过 CodingPlan 的 React + Node.js 系统化路径，从组件化思维到 API 设计层层递进，120 小时实战打通全栈技能链。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
+          <h4><span class="iconify" data-icon="solar:cup-star-bold-duotone"></span> 收益</h4> <!-- 收益标题 -->
           <p>3 个月拿到全栈 Offer，薪资涨幅 85%，独立负责微服务架构重构，团队交付效率提升 40%。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -620,22 +859,22 @@
     </article> <!-- 结束案例卡片1 -->
 
     <!-- 案例卡片2: 金融数据看板 -->
-    <article class="case-card" role="article" aria-label="金融数据看板成功案例"> <!-- 案例卡片2 -->
+    <article class="case-card" data-aos="fade-up" data-aos-delay="150"> <!-- 案例卡片2 -->
       <div class="case-header"> <!-- 案例头部 -->
         <h3 class="case-title">金融数据实时看板</h3> <!-- 案例标题 -->
         <span class="case-tag">金融行业</span> <!-- 行业标签 -->
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
+          <h4><span class="iconify" data-icon="solar:danger-triangle-bold-duotone"></span> 痛点</h4> <!-- 问题标题 -->
           <p>传统培训课程侧重理论，缺少真实项目演练。学员只会 CRUD，面对高并发数据可视化需求无从下手。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
-        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
+        <div class="case-block solution" role="region" aria-label="解决方案"> <!-- 方案列 -->
+          <h4><span class="iconify" data-icon="solar:lightbulb-bolt-bold-duotone"></span> 方案</h4> <!-- 方案标题 -->
           <p>跟随 CodingPlan 的性能优化 + 数据结构专项路径，通过 WebSocket 实时推送、虚拟列表等高级项目，积累金融级前端经验。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
+          <h4><span class="iconify" data-icon="solar:cup-star-bold-duotone"></span> 收益</h4> <!-- 收益标题 -->
           <p>成功转型金融前端工程师，独立交付百万级数据看板项目，页面渲染性能提升 60%，获得年度最佳新人奖。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -656,22 +895,22 @@
     </article> <!-- 结束案例卡片2 -->
 
     <!-- 案例卡片3: 医疗患者门户 -->
-    <article class="case-card" role="article" aria-label="医疗患者门户成功案例"> <!-- 案例卡片3 -->
+    <article class="case-card" data-aos="fade-up" data-aos-delay="200"> <!-- 案例卡片3 -->
       <div class="case-header"> <!-- 案例头部 -->
         <h3 class="case-title">医疗患者管理门户</h3> <!-- 案例标题 -->
         <span class="case-tag">医疗行业</span> <!-- 行业标签 -->
       </div> <!-- 结束案例头部 -->
       <div class="case-body"> <!-- 案例主体 -->
         <div class="case-block problem" role="region" aria-label="面临的问题"> <!-- 问题列 -->
-          <h4><i data-lucide="alert-triangle"></i> 痛点</h4> <!-- 问题标题 -->
+          <h4><span class="iconify" data-icon="solar:danger-triangle-bold-duotone"></span> 痛点</h4> <!-- 问题标题 -->
           <p>医疗行业对安全性和可访问性要求极高，传统学习路径缺少合规实践，学员难以胜任企业级项目开发。</p> <!-- 问题描述 -->
         </div> <!-- 结束问题列 -->
-        <div class="case-block solution" role="region" aria-label="CodingPlan 解决方案"> <!-- 方案列 -->
-          <h4><i data-lucide="lightbulb"></i> 方案</h4> <!-- 方案标题 -->
+        <div class="case-block solution" role="region" aria-label="解决方案"> <!-- 方案列 -->
+          <h4><span class="iconify" data-icon="solar:lightbulb-bolt-bold-duotone"></span> 方案</h4> <!-- 方案标题 -->
           <p>借助 CodingPlan 的 HTML/CSS 基础到 DevOps 全链路计划，在项目实战中融入 WCAG 无障碍标准和 CI/CD 自动化部署。</p> <!-- 方案描述 -->
         </div> <!-- 结束方案列 -->
         <div class="case-block benefit" role="region" aria-label="获得的收益"> <!-- 收益列 -->
-          <h4><i data-lucide="trophy"></i> 收益</h4> <!-- 收益标题 -->
+          <h4><span class="iconify" data-icon="solar:cup-star-bold-duotone"></span> 收益</h4> <!-- 收益标题 -->
           <p>5 个月内从零基础成长为全栈开发者，主导开发的患者门户服务 10 万+ 用户，系统可用性达 99.9%。</p> <!-- 收益描述 -->
         </div> <!-- 结束收益列 -->
       </div> <!-- 结束案例主体 -->
@@ -694,34 +933,122 @@
 
   <!-- ========== 页脚 ========== -->
   <footer class="footer" id="about"> <!-- 页脚区域 -->
-    <p>Coding Plan &copy; 2026 — 系统化学习，高效成长</p> <!-- 版权信息 -->
+    <p>&lt;/CODING PLAN&gt; &copy; 2026 — 系统化学习，高效成长</p> <!-- 版权信息 -->
   </footer> <!-- 结束页脚 -->
 
-  <!-- ========== 筛选交互脚本 ========== -->
+  <!-- ========== 外部脚本引入 ========== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <!-- AOS 滚动动画库 -->
+
+  <!-- ========== 交互脚本 ========== -->
   <script> /* 脚本开始 */
-    function filterPlans(level, e) { /* 筛选计划函数，接收难度等级和事件参数 */
+    /* ========== 初始化 AOS 滚动动画 ========== */
+    AOS.init({ /* AOS 配置对象 */
+      duration: 700, /* 动画持续时间 700ms */
+      easing: 'ease-out-cubic', /* 缓动函数：先快后慢 */
+      once: true, /* 只触发一次 */
+      offset: 60 /* 偏移量：元素距视口底部60px时触发 */
+    }); /* 结束 AOS 配置 */
+
+    /* ========== 导航栏滚动效果 ========== */
+    var navbar = document.getElementById('navbar'); /* 获取导航栏元素 */
+    window.addEventListener('scroll', function() { /* 监听页面滚动事件 */
+      if (window.scrollY > 20) { /* 如果滚动超过20px */
+        navbar.classList.add('scrolled'); /* 添加滚动状态类 */
+      } else { /* 否则 */
+        navbar.classList.remove('scrolled'); /* 移除滚动状态类 */
+      } /* 结束条件判断 */
+    }); /* 结束滚动监听 */
+
+    /* ========== 收藏功能：localStorage 持久化 ========== */
+    var STORAGE_KEY = 'codingplan_bookmarks'; /* localStorage 存储键名 */
+
+    function getBookmarks() { /* 获取所有收藏列表 */
+      try { /* 尝试读取 */
+        var data = localStorage.getItem(STORAGE_KEY); /* 从 localStorage 读取 */
+        return data ? JSON.parse(data) : []; /* 解析 JSON，若无则返回空数组 */
+      } catch (e) { /* 如果解析失败 */
+        return []; /* 返回空数组 */
+      } /* 结束异常处理 */
+    } /* 结束 getBookmarks 函数 */
+
+    function saveBookmarks(bookmarks) { /* 保存收藏列表到 localStorage */
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); /* 序列化为 JSON 并存储 */
+    } /* 结束 saveBookmarks 函数 */
+
+    function isBookmarked(planId) { /* 判断某个计划是否已收藏 */
+      return getBookmarks().indexOf(planId) !== -1; /* 检查 planId 是否在数组中 */
+    } /* 结束 isBookmarked 函数 */
+
+    function toggleBookmark(planId, btn) { /* 切换收藏状态 */
+      var bookmarks = getBookmarks(); /* 获取当前收藏列表 */
+      var index = bookmarks.indexOf(planId); /* 查找该计划的索引 */
+      var icon = btn.querySelector('.iconify'); /* 获取按钮中的图标元素 */
+
+      if (index === -1) { /* 如果未收藏 */
+        bookmarks.push(planId); /* 添加到收藏列表 */
+        btn.classList.add('active'); /* 添加激活样式 */
+        icon.setAttribute('data-icon', 'solar:bookmark-bold-duotone'); /* 切换为实心书签图标 */
+      } else { /* 如果已收藏 */
+        bookmarks.splice(index, 1); /* 从收藏列表移除 */
+        btn.classList.remove('active'); /* 移除激活样式 */
+        icon.setAttribute('data-icon', 'solar:bookmark-line-duotone'); /* 切换为空心书签图标 */
+      } /* 结束条件判断 */
+
+      saveBookmarks(bookmarks); /* 保存更新后的收藏列表 */
+    } /* 结束 toggleBookmark 函数 */
+
+    function restoreBookmarks() { /* 页面加载时恢复收藏状态 */
+      var bookmarks = getBookmarks(); /* 获取收藏列表 */
+      var cards = document.querySelectorAll('.plan-card'); /* 获取所有卡片 */
+
+      cards.forEach(function(card) { /* 遍历所有卡片 */
+        var planId = card.getAttribute('data-plan-id'); /* 获取计划 ID */
+        var btn = card.querySelector('.bookmark-btn'); /* 获取收藏按钮 */
+        var icon = btn.querySelector('.iconify'); /* 获取图标元素 */
+
+        if (bookmarks.indexOf(planId) !== -1) { /* 如果该计划已收藏 */
+          btn.classList.add('active'); /* 添加激活样式 */
+          icon.setAttribute('data-icon', 'solar:bookmark-bold-duotone'); /* 显示实心书签 */
+        } /* 结束条件判断 */
+      }); /* 结束卡片遍历 */
+    } /* 结束 restoreBookmarks 函数 */
+
+    /* ========== 筛选计划函数 ========== */
+    function filterPlans(level, e) { /* 筛选计划，接收难度等级和事件对象 */
       var cards = document.querySelectorAll('.plan-card'); /* 获取所有计划卡片 */
       var buttons = document.querySelectorAll('.filter-btn'); /* 获取所有筛选按钮 */
+      var bookmarks = getBookmarks(); /* 获取当前收藏列表 */
 
       buttons.forEach(function(btn) { /* 遍历所有按钮 */
         btn.classList.remove('active'); /* 移除激活状态 */
       }); /* 结束按钮遍历 */
 
-      e.target.classList.add('active'); /* 为当前点击的按钮添加激活状态 */
+      e.target.closest('.filter-btn').classList.add('active'); /* 为点击的按钮添加激活状态 */
 
       cards.forEach(function(card) { /* 遍历所有卡片 */
+        var cardLevel = card.getAttribute('data-level'); /* 获取卡片难度等级 */
+        var planId = card.getAttribute('data-plan-id'); /* 获取计划 ID */
+        var shouldShow = false; /* 默认不显示 */
+
         if (level === 'all') { /* 如果选择"全部" */
-          card.style.display = 'block'; /* 显示卡片 */
-        } else if (card.getAttribute('data-level') === level) { /* 如果卡片等级匹配 */
-          card.style.display = 'block'; /* 显示卡片 */
-        } else { /* 否则 */
-          card.style.display = 'none'; /* 隐藏卡片 */
+          shouldShow = true; /* 显示所有卡片 */
+        } else if (level === 'bookmarked') { /* 如果选择"已收藏" */
+          shouldShow = bookmarks.indexOf(planId) !== -1; /* 仅显示已收藏的卡片 */
+        } else { /* 否则按难度筛选 */
+          shouldShow = cardLevel === level; /* 匹配难度等级 */
         } /* 结束条件判断 */
+
+        if (shouldShow) { /* 如果应显示 */
+          card.classList.remove('hidden'); /* 移除隐藏类 */
+          card.style.display = ''; /* 清除内联 display 样式 */
+        } else { /* 否则 */
+          card.classList.add('hidden'); /* 添加隐藏类 */
+        } /* 结束显示/隐藏判断 */
       }); /* 结束卡片遍历 */
     } /* 结束筛选函数 */
 
-    /* 初始化 Lucide 图标渲染 */
-    lucide.createIcons(); /* 将所有 <i data-lucide> 标签渲染为 SVG 图标 */
+    /* ========== 页面加载后恢复收藏状态 ========== */
+    restoreBookmarks(); /* 调用恢复函数，从 localStorage 恢复 UI 状态 */
   </script> <!-- 结束脚本 -->
 </body> <!-- 结束页面主体 -->
 </html> <!-- 结束 HTML 文档 -->
