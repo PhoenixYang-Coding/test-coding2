@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/edy/develop/coding/adit/adit-core/packages/hooks/dist/index.js\" --platform codex --project-root-b64 L1VzZXJzL2VkeS9kZXZlbG9wL2NvZGluZy90ZXN0LWNvZGluZzI session-start",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/edy/develop/coding/adit/adit-core/packages/hooks/dist/index.js\" --platform codex --project-root-b64 L1VzZXJzL2VkeS9kZXZlbG9wL2NvZGluZy90ZXN0LWNvZGluZzI prompt-submit",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/edy/develop/coding/adit/adit-core/packages/hooks/dist/index.js\" --platform codex --project-root-b64 L1VzZXJzL2VkeS9kZXZlbG9wL2NvZGluZy90ZXN0LWNvZGluZzI stop",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
